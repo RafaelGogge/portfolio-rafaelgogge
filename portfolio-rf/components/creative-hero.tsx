@@ -10,13 +10,10 @@ import {
   ChevronDown,
   X,
   FileText,
-  Terminal,
   Code,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/hooks/use-i18n";
-import { HackerTerminal } from "./hacker-terminal";
-import { TerminalButton } from "./terminal-button";
 import { FloatingCode } from "./floating-code";
 import { TypewriterEffect } from "./typewriter-effect";
 

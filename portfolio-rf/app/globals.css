@@ -985,23 +985,6 @@
     0 0 30px rgba(0, 255, 0, 0.1);
 }
 
-/* Terminal Button Enhancements */
-.terminal-button-pulse {
-  animation: pulse-green 2s infinite;
-}
-
-@keyframes pulse-green {
-  0% {
-    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(0, 255, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
-  }
-}
-
 /* Enhanced Modal Styles */
 .modal-backdrop {
   backdrop-filter: blur(8px);

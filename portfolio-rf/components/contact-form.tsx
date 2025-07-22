@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Send,
@@ -31,6 +31,121 @@ import { useToast } from "@/hooks/use-toast";
 import { useI18n } from "@/hooks/use-i18n";
 
 type FormStatus = "idle" | "success" | "error";
+
+// Componente FormField otimizado e memorizado
+const FormField = React.memo(
+  ({
+    icon: Icon,
+    field,
+    placeholder,
+    type = "text",
+    component = "input",
+    value,
+    onChange,
+    onFocus,
+    onBlur,
+    focusedField,
+    hasError,
+    errorMessage,
+  }: {
+    icon: any;
+    field: string;
+    placeholder: string;
+    type?: string;
+    component?: "input" | "textarea";
+    value: string;
+    onChange: (value: string) => void;
+    onFocus: () => void;
+    onBlur: () => void;
+    focusedField: string | null;
+    hasError: boolean;
+    errorMessage?: string;
+  }) => {
+    return (
+      <motion.div
+        className="space-y-1 relative"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <label htmlFor={field} className="sr-only">
+          {placeholder}
+        </label>
+        <div className="relative">
+          <Icon className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+          {component === "input" ? (
+            <motion.div
+              animate={focusedField === field ? "focused" : "unfocused"}
+              transition={{ duration: 0.2 }}
+            >
+              <Input
+                id={field}
+                type={type}
+                placeholder={placeholder}
+                value={value}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  onChange(e.target.value)
+                }
+                onFocus={onFocus}
+                onBlur={onBlur}
+                aria-invalid={hasError}
+                aria-describedby={hasError ? `${field}-error` : undefined}
+                className={`pl-10 bg-zinc-900/50 border transition-colors duration-200 ${
+                  hasError
+                    ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
+                    : "border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
+                }`}
+                required
+              />
+            </motion.div>
+          ) : (
+            <motion.div
+              animate={focusedField === field ? "focused" : "unfocused"}
+              transition={{ duration: 0.2 }}
+            >
+              <Textarea
+                id={field}
+                placeholder={placeholder}
+                value={value}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                  onChange(e.target.value)
+                }
+                onFocus={onFocus}
+                onBlur={onBlur}
+                rows={5}
+                aria-invalid={hasError}
+                aria-describedby={hasError ? `${field}-error` : undefined}
+                className={`pl-10 pt-3 bg-zinc-900/50 border transition-colors duration-200 resize-none ${
+                  hasError
+                    ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
+                    : "border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
+                }`}
+                required
+              />
+            </motion.div>
+          )}
+        </div>
+        {/* Erro abaixo do campo */}
+        <AnimatePresence>
+          {hasError && (
+            <motion.p
+              id={`${field}-error`}
+              role="alert"
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              className="text-sm text-red-400 mt-1 select-none"
+            >
+              {errorMessage}
+            </motion.p>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    );
+  }
+);
+
+FormField.displayName = "FormField";
 
 export function ContactForm() {
   const { toast } = useToast();
@@ -188,17 +303,28 @@ export function ContactForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleInputChange = (field: keyof typeof formData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    // Limpa erro ao digitar
-    if (errors[field]) {
-      setErrors((prev) => {
-        const copy = { ...prev };
-        delete copy[field];
-        return copy;
-      });
-    }
-  };
+  const handleInputChange = useCallback(
+    (field: keyof typeof formData, value: string) => {
+      setFormData((prev: typeof formData) => ({ ...prev, [field]: value }));
+      // Limpa erro ao digitar
+      if (errors[String(field)]) {
+        setErrors((prev: Record<string, string>) => {
+          const copy = { ...prev };
+          delete copy[String(field)];
+          return copy;
+        });
+      }
+    },
+    [errors]
+  );
+
+  const handleFieldFocus = useCallback((field: string) => {
+    setFocusedField(field);
+  }, []);
+
+  const handleFieldBlur = useCallback(() => {
+    setFocusedField(null);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -238,109 +364,6 @@ export function ContactForm() {
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const FormField = ({
-    icon: Icon,
-    field,
-    placeholder,
-    type = "text",
-    component = "input",
-  }: {
-    icon: any;
-    field: keyof typeof formData;
-    placeholder: string;
-    type?: string;
-    component?: "input" | "textarea";
-  }) => {
-    const hasError = Boolean(errors[field]);
-    const errorMessage = errors[field];
-
-    return (
-      <motion.div
-        className="space-y-1 relative"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <label htmlFor={String(field)} className="sr-only">
-          {placeholder}
-        </label>
-        <div className="relative">
-          <Icon className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-          {component === "input" ? (
-            <motion.div
-              animate={focusedField === String(field) ? "focused" : "unfocused"}
-              transition={{ duration: 0.2 }}
-            >
-              <Input
-                id={String(field)}
-                type={type}
-                placeholder={placeholder}
-                value={formData[field]}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  handleInputChange(field, e.target.value)
-                }
-                onFocus={() => setFocusedField(String(field))}
-                onBlur={() => setFocusedField(null)}
-                aria-invalid={hasError}
-                aria-describedby={
-                  hasError ? `${String(field)}-error` : undefined
-                }
-                className={`pl-10 bg-zinc-900/50 border transition-colors duration-200 ${
-                  hasError
-                    ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
-                    : "border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
-                }`}
-                required
-              />
-            </motion.div>
-          ) : (
-            <motion.div
-              animate={focusedField === String(field) ? "focused" : "unfocused"}
-              transition={{ duration: 0.2 }}
-            >
-              <Textarea
-                id={String(field)}
-                placeholder={placeholder}
-                value={formData[field]}
-                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                  handleInputChange(field, e.target.value)
-                }
-                onFocus={() => setFocusedField(String(field))}
-                onBlur={() => setFocusedField(null)}
-                rows={5}
-                aria-invalid={hasError}
-                aria-describedby={
-                  hasError ? `${String(field)}-error` : undefined
-                }
-                className={`pl-10 pt-3 bg-zinc-900/50 border transition-colors duration-200 resize-none ${
-                  hasError
-                    ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
-                    : "border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
-                }`}
-                required
-              />
-            </motion.div>
-          )}
-        </div>
-        {/* Erro abaixo do campo */}
-        <AnimatePresence>
-          {hasError && (
-            <motion.p
-              id={`${String(field)}-error`}
-              role="alert"
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -5 }}
-              className="text-sm text-red-400 mt-1 select-none"
-            >
-              {errorMessage}
-            </motion.p>
-          )}
-        </AnimatePresence>
-      </motion.div>
-    );
   };
 
   return (
@@ -543,12 +566,26 @@ export function ContactForm() {
                 icon={User}
                 field="name"
                 placeholder="Seu nome completo"
+                value={formData.name}
+                onChange={(value) => handleInputChange("name", value)}
+                onFocus={() => handleFieldFocus("name")}
+                onBlur={handleFieldBlur}
+                focusedField={focusedField}
+                hasError={Boolean(errors.name)}
+                errorMessage={errors.name}
               />
               <FormField
                 icon={Mail}
                 field="email"
                 placeholder="seu@email.com"
                 type="email"
+                value={formData.email}
+                onChange={(value) => handleInputChange("email", value)}
+                onFocus={() => handleFieldFocus("email")}
+                onBlur={handleFieldBlur}
+                focusedField={focusedField}
+                hasError={Boolean(errors.email)}
+                errorMessage={errors.email}
               />
             </div>
 
@@ -556,6 +593,13 @@ export function ContactForm() {
               icon={FileText}
               field="subject"
               placeholder="Assunto da mensagem"
+              value={formData.subject}
+              onChange={(value) => handleInputChange("subject", value)}
+              onFocus={() => handleFieldFocus("subject")}
+              onBlur={handleFieldBlur}
+              focusedField={focusedField}
+              hasError={Boolean(errors.subject)}
+              errorMessage={errors.subject}
             />
 
             <FormField
@@ -563,6 +607,13 @@ export function ContactForm() {
               field="message"
               placeholder="Descreva sua proposta, projeto ou oportunidade..."
               component="textarea"
+              value={formData.message}
+              onChange={(value) => handleInputChange("message", value)}
+              onFocus={() => handleFieldFocus("message")}
+              onBlur={handleFieldBlur}
+              focusedField={focusedField}
+              hasError={Boolean(errors.message)}
+              errorMessage={errors.message}
             />
 
             <motion.div

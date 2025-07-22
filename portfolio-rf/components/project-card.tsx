@@ -174,7 +174,7 @@ export function ProjectCard({
         )}
 
         {/* Header with image and overlays */}
-        <div className="relative overflow-hidden h-56 flex-shrink-0 group/image">
+        <div className="relative overflow-hidden h-80 flex-shrink-0 group/image">
           {/* Priority badge */}
           {priority && (
             <motion.div
@@ -289,7 +289,7 @@ export function ProjectCard({
 
           {/* Image with enhanced hover effects */}
           <motion.img
-            src={image || "/placeholder.svg?height=200&width=400"}
+            src={image || "/placeholder.svg?height=320&width=800"}
             alt={title}
             className={`w-full h-full object-cover transition-all duration-700 ${
               isPrivate ? "grayscale opacity-50" : ""

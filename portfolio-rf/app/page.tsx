@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { CreativeHero } from "@/components/creative-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { Timeline } from "@/components/timeline";
@@ -12,26 +11,11 @@ import { EducationSelector } from "@/components/education-selector";
 import { TechRadarSkills } from "@/components/tech-radar-skills";
 import { HologramCourses } from "@/components/hologram-courses";
 import { Footer } from "@/components/footer";
-import { HackerTerminal } from "@/components/hacker-terminal";
-import { TerminalButton } from "@/components/terminal-button";
 import { useI18n } from "@/hooks/use-i18n";
 import { motion } from "framer-motion";
 
 export default function Home() {
   const { t } = useI18n();
-  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
-  const [isTerminalExpanded, setIsTerminalExpanded] = useState(false);
-
-  const handleTerminalToggle = () => {
-    setIsTerminalOpen(!isTerminalOpen);
-    if (!isTerminalOpen) {
-      setIsTerminalExpanded(false);
-    }
-  };
-
-  const handleTerminalExpandToggle = () => {
-    setIsTerminalExpanded(!isTerminalExpanded);
-  };
 
   const projects = [
     {
@@ -650,22 +634,6 @@ export default function Home() {
       </section>
 
       <Footer />
-
-      {/* Global Enhanced Terminal */}
-      <TerminalButton
-        onClick={handleTerminalToggle}
-        isOpen={isTerminalOpen}
-        onExpandToggle={handleTerminalExpandToggle}
-        isExpanded={isTerminalExpanded}
-      />
-
-      <HackerTerminal
-        isOpen={isTerminalOpen}
-        onClose={() => setIsTerminalOpen(false)}
-        onToggle={handleTerminalToggle}
-        isExpanded={isTerminalExpanded}
-        onExpandToggle={handleTerminalExpandToggle}
-      />
     </main>
   );
 }

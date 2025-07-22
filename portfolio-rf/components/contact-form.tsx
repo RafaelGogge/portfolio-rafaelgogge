@@ -188,11 +188,11 @@ export function ContactForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData((prev: any) => ({ ...prev, [field]: value }));
+  const handleInputChange = (field: keyof typeof formData, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
     // Limpa erro ao digitar
     if (errors[field]) {
-      setErrors((prev: any) => {
+      setErrors((prev) => {
         const copy = { ...prev };
         delete copy[field];
         return copy;
@@ -248,7 +248,7 @@ export function ContactForm() {
     component = "input",
   }: {
     icon: any;
-    field: string;
+    field: keyof typeof formData;
     placeholder: string;
     type?: string;
     component?: "input" | "textarea";
@@ -263,26 +263,30 @@ export function ContactForm() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <label htmlFor={field} className="sr-only">
+        <label htmlFor={String(field)} className="sr-only">
           {placeholder}
         </label>
         <div className="relative">
           <Icon className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
           {component === "input" ? (
             <motion.div
-              animate={focusedField === field ? "focused" : "unfocused"}
+              animate={focusedField === String(field) ? "focused" : "unfocused"}
               transition={{ duration: 0.2 }}
             >
               <Input
-                id={field}
+                id={String(field)}
                 type={type}
                 placeholder={placeholder}
-                value={formData[field as keyof typeof formData]}
-                onChange={(e: any) => handleInputChange(field, e.target.value)}
-                onFocus={() => setFocusedField(field)}
+                value={formData[field]}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleInputChange(field, e.target.value)
+                }
+                onFocus={() => setFocusedField(String(field))}
                 onBlur={() => setFocusedField(null)}
                 aria-invalid={hasError}
-                aria-describedby={hasError ? `${field}-error` : undefined}
+                aria-describedby={
+                  hasError ? `${String(field)}-error` : undefined
+                }
                 className={`pl-10 bg-zinc-900/50 border transition-colors duration-200 ${
                   hasError
                     ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
@@ -293,19 +297,23 @@ export function ContactForm() {
             </motion.div>
           ) : (
             <motion.div
-              animate={focusedField === field ? "focused" : "unfocused"}
+              animate={focusedField === String(field) ? "focused" : "unfocused"}
               transition={{ duration: 0.2 }}
             >
               <Textarea
-                id={field}
+                id={String(field)}
                 placeholder={placeholder}
-                value={formData[field as keyof typeof formData]}
-                onChange={(e: any) => handleInputChange(field, e.target.value)}
-                onFocus={() => setFocusedField(field)}
+                value={formData[field]}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                  handleInputChange(field, e.target.value)
+                }
+                onFocus={() => setFocusedField(String(field))}
                 onBlur={() => setFocusedField(null)}
                 rows={5}
                 aria-invalid={hasError}
-                aria-describedby={hasError ? `${field}-error` : undefined}
+                aria-describedby={
+                  hasError ? `${String(field)}-error` : undefined
+                }
                 className={`pl-10 pt-3 bg-zinc-900/50 border transition-colors duration-200 resize-none ${
                   hasError
                     ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
@@ -320,7 +328,7 @@ export function ContactForm() {
         <AnimatePresence>
           {hasError && (
             <motion.p
-              id={`${field}-error`}
+              id={`${String(field)}-error`}
               role="alert"
               initial={{ opacity: 0, y: -5 }}
               animate={{ opacity: 1, y: 0 }}

@@ -401,12 +401,6 @@ export function TechRadarSkills() {
                   ? "bg-gradient-to-r from-green-400 to-emerald-500 shadow-2xl shadow-green-500/50"
                   : "bg-gradient-to-r from-zinc-600 to-zinc-700 shadow-xl shadow-zinc-700/50"
               }`}
-              whileHover={{ 
-                scale: 1.15,
-                boxShadow: radarActive 
-                  ? "0 0 50px rgba(34, 197, 94, 0.8)" 
-                  : "0 0 40px rgba(113, 113, 122, 0.6)"
-              }}
               whileTap={{ scale: 0.9 }}
               style={{
                 boxShadow: radarActive
@@ -508,7 +502,6 @@ export function TechRadarSkills() {
                 <motion.button
                   onClick={() => handleAreaClick(key)}
                   className="relative group focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  whileHover={{ scale: 1.15 }}
                   whileTap={{ scale: 0.9 }}
                   aria-label={`Área ${area.title}`}
                   tabIndex={0}

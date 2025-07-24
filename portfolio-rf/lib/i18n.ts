@@ -30,7 +30,6 @@ export const translations = {
     "nav.projects": "Projetos",
     "nav.experience": "Experiência",
     "nav.contact": "Contato",
-    "nav.resume": "Currículo",
 
     // Hero Section
     "hero.role": "Desenvolvedor Frontend",
@@ -43,8 +42,6 @@ export const translations = {
     // About Section
     "about.title": "Sobre Mim",
     "about.subtitle": "Minha trajetória e experiência",
-    "about.available": "Disponível para oportunidades",
-    "about.downloadResume": "Download Currículo",
     "about.description1":
       "Olá! Sou Rafael Vieira Gogge, desenvolvedor front-end em formação e apaixonado por criar soluções digitais com propósito. Atualmente atuo na Secretaria de Estado da Saúde do Espírito Santo (SESA), onde contribuo para o desenvolvimento de sistemas voltados à comunicação institucional, visualização de dados públicos e à transformação digital de serviços.",
     "about.description2":
@@ -142,9 +139,6 @@ export const translations = {
     "contact.title": "Entre em Contato",
     "contact.subtitle": "Vamos trabalhar juntos",
     "contact.info": "Informações de Contato",
-    "contact.status": "Status Atual",
-    "contact.available":
-      "Disponível para qualquer trabalho na área de tecnologia. Entre em contato para possíveis colaborações.",
     "contact.email": "rafa.gogge@gmail.com",
     "contact.location": "Vitória, ES - Brasil",
     "contact.form.title": "Envie uma mensagem",
@@ -228,7 +222,6 @@ export const translations = {
     "nav.projects": "Projects",
     "nav.experience": "Experience",
     "nav.contact": "Contact",
-    "nav.resume": "Resume",
 
     // Hero Section
     "hero.role": "Frontend Developer",
@@ -241,8 +234,6 @@ export const translations = {
     // About Section
     "about.title": "About Me",
     "about.subtitle": "My journey and experience",
-    "about.available": "Available for opportunities",
-    "about.downloadResume": "Download Resume",
     "about.description1":
       "Hello! I am Rafael Vieira Gogge, a front-end developer in training and passionate about creating digital solutions with purpose. Currently I work at the State Health Department of Espírito Santo (SESA), where I contribute to the development of systems focused on institutional communication, public data visualization and digital transformation of services.",
     "about.description2":
@@ -339,9 +330,6 @@ export const translations = {
     "contact.title": "Get In Touch",
     "contact.subtitle": "Let's work together",
     "contact.info": "Contact Information",
-    "contact.status": "Current Status",
-    "contact.available":
-      "Available for any technology work. Contact me for possible collaborations.",
     "contact.email": "rafa.gogge@gmail.com",
     "contact.location": "Vitória, ES - Brazil",
     "contact.form.title": "Send a message",
@@ -419,7 +407,7 @@ export const translations = {
     "nav.home": "Inicio",
     "nav.about": "Acerca",
     "nav.skills": "Habilidades",
-    "nav.education": "Formación",
+    "nav.education": "Formação",
     "nav.projects": "Proyectos",
     "nav.experience": "Experiencia",
     "nav.contact": "Contacto",
@@ -443,332 +431,4 @@ export const translations = {
     "about.description2":
       "También trabajo como desarrollador freelancer, creando proyectos personalizados con enfoque en usabilidad, accesibilidad y automatización — desde bots y quizzes hasta sistemas web completos. Soy estudiante de Análisis y Desarrollo de Sistemas en el Centro Universitário Salesiano – UniSales y también curso Gestión de Tecnología de la Información en Multivix, lo que me permite unir visión estratégica de TI con práctica técnica en desarrollo.",
     "about.description3":
-      "Mi trayectoria comenzó en el área administrativa, en ambientes públicos y privados, lo que me proporcionó una visión sistémica, enfoque en procesos y habilidad de comunicación — competencias que ahora aplico directamente en tecnología. Tengo experiencia con JavaScript, HTML, CSS, Bootstrap, Tailwind y Git, además de familiaridad con Python, Django y herramientas de inteligencia artificial. En mis proyectos personales y profesionales, siempre busco unir tecnología, accesibilidad e impacto social. Estoy en constante evolución, con el objetivo de consolidarme como desarrollador front-end y explorar aún más el potencial de la IA aplicada al desarrollo.",
-    "about.name": "Nombre",
-    "about.birth": "Nacimiento",
-    "about.location": "Ubicación",
-    "about.linkedin": "LinkedIn",
-
-    // Skills Section
-    "skills.title": "Áreas Técnicas de Especialización",
-    "skills.subtitle": "Mis competencias organizadas por especialidad",
-    "skills.frontend": "Front-End",
-    "skills.backend": "Back-End",
-    "skills.database": "Base de Datos",
-    "skills.automation": "Automatización y Nube",
-    "skills.frontend.description":
-      "Interfaces modernas, accesibles y responsivas",
-    "skills.backend.description":
-      "APIs, reglas de negocio y sistemas dinámicos",
-    "skills.database.description": "Modelado relacional e integración de datos",
-    "skills.automation.description":
-      "Automatización de procesos e infraestructura",
-
-    // Education Section
-    "education.title": "Formación Académica",
-    "education.subtitle": "Mi viaje de aprendizaje",
-    "education.ads": "Análisis y Desarrollo de Sistemas",
-    "education.admin": "Administración",
-    "education.institution": "Centro Universitário Salesiano (UniSales)",
-    "education.completed": "Completado",
-    "education.inProgress": "En Progreso",
-    "education.suspended": "Suspendido",
-    "education.subjects": "Materias:",
-    "education.learnings": "Aprendizajes Clave:",
-
-    // Projects Section
-    "projects.title": "Proyectos Destacados",
-    "projects.subtitle": "Algunos de mis trabajos recientes",
-    "projects.liveDemo": "Demo en Vivo",
-    "projects.code": "Código",
-    "projects.securitypass.title": "SecurityPass Pro",
-    "projects.securitypass.description":
-      "Sistema avanzado para generar y analizar contraseñas seguras con interfaz moderna y soporte PWA.",
-    "projects.events.title": "Panel de Eventos SSVS",
-    "projects.events.description":
-      "Panel institucional dinámico para mostrar eventos de la Subsecretaría de Vigilancia en Salud.",
-    "projects.wiki.title": "Wiki Institucional SESA",
-    "projects.wiki.description":
-      "Plataforma colaborativa de gestión del conocimiento con perfiles de acceso público y privado.",
-    "projects.unilab.title":
-      "UniLab - Sistema Automatizado de Gestión de Horarios para Reserva de Laboratorios",
-    "projects.unilab.description":
-      "Plataforma educacional completa con sistema de programación, gestión de recursos y automatización de procesos para laboratorio universitario, desarrollada para profesores, funcionarios y estudiantes. Login de administrador: admin | Contraseña: admin",
-    "projects.quiz1.title": "Super Quiz Interactivo",
-    "projects.quiz1.description":
-      "Quiz gamificado para revisar la disciplina de Calidad de Software.",
-    "projects.quiz2.title": "Quiz Master Web Service",
-    "projects.quiz2.description":
-      "Quiz temático enfocado en conceptos de Web Services y APIs (REST, SOAP, HTTP).",
-
-    // Experience Section
-    "experience.title": "Experiencia Profesional",
-    "experience.subtitle": "Mi trayectoria profesional",
-    "experience.current": "Presente",
-    "experience.freelancer.title": "Desarrollador Freelancer",
-    "experience.freelancer.company": "Desarrollador Front-end Remoto – Brasil",
-    "experience.freelancer.period": "Ago 2024 - Presente",
-    "experience.freelancer.description":
-      "Desarrollo de soluciones web autorales con foco en accesibilidad, usabilidad e impacto real, utilizando JavaScript, Python, HTML5, CSS3, Bootstrap, Tailwind CSS, N8N, Github Copilot y herramientas de IA. Desarrollé quizzes interactivos, como el Super Quiz de Calidad de Software y el Quiz Master Web Service, con lógica condicional, control de puntuación y feedback visual. Creación del UniLab, sistema académico completo para programación de laboratorios y envío de justificaciones, con autenticación, formularios dinámicos e interfaz administrativa intuitiva. Desarrollo inicial del UniChat con N8N, bot de Telegram integrado al UniLab, permitiendo a los usuarios consultar reservas, plazos e información directamente por la aplicación, ampliando el acceso y la eficiencia del sistema.",
-    "experience.sesa.title": "Desarrollador Front-end",
-    "experience.sesa.company":
-      "Secretaría de Estado de Salud de Espírito Santo - SESA (tercerizado vía MGS)",
-    "experience.sesa.period": "Feb 2025 - Presente",
-    "experience.sesa.description":
-      "Desarrollo Front-end de sistemas internos orientados a la comunicación institucional de la Secretaría de Estado de Salud de Espírito Santo (SESA) y de la Subsecretaría de Vigilancia en Salud (SSVS), utilizando JavaScript, HTML5, CSS3, Bootstrap, Tailwind, Python, PostgreSQL, Django, Git, Gitlab y Github. Creación del Panel de Eventos de la Subsecretaría de Vigilancia en Salud, plataforma dinámica de exhibición de eventos institucionales con filtros interactivos, personalización visual y generación de informes en tiempo real. Modernización de la Wiki Institucional de la SESA, con foco en usabilidad, accesibilidad y organización de contenido colaborativo, facilitando el compartimiento de documentos, tutoriales y procesos internos entre servidores.",
-    "experience.alliance.title": "Supervisor de Mantenimiento de Condominios",
-    "experience.alliance.company": "Alliance Gestión y Tecnología LTDA",
-    "experience.alliance.period": "Abr 2023 - Abr 2025",
-    "experience.alliance.description":
-      "Gestión operativa de condominios, control financiero, atención al cliente y coordinación de servicios programados usando Excel y plataformas especializadas.",
-
-    // Contact Section
-    "contact.title": "Ponte en Contacto",
-    "contact.subtitle": "Trabajemos juntos",
-    "contact.info": "Información de Contacto",
-    "contact.status": "Estado Actual",
-    "contact.available":
-      "Disponible para cualquier trabajo en el área de tecnología. Contáctame para posibles colaboraciones.",
-    "contact.email": "rafa.gogge@gmail.com",
-    "contact.location": "Vitória, ES - Brasil",
-    "contact.form.title": "Envía un mensaje",
-    "contact.form.namePlaceholder": "TU NOMBRE",
-    "contact.form.emailPlaceholder": "TU EMAIL",
-    "contact.form.subjectPlaceholder": "ASUNTO",
-    "contact.form.messagePlaceholder": "ESCRIBE TU MENSAJE",
-    "contact.form.submit": "Enviar Mensaje",
-    "contact.form.sending": "Enviando...",
-    "contact.form.successMessage":
-      "¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.",
-    "contact.form.errorMessage":
-      "Hubo un problema. Inténtalo de nuevo más tarde.",
-    "contact.form.validation.nameRequired": "El nombre es obligatorio.",
-    "contact.form.validation.emailRequired": "El email es obligatorio.",
-    "contact.form.validation.emailInvalid": "Formato de email inválido.",
-    "contact.form.validation.subjectRequired": "El asunto es obligatorio.",
-    "contact.form.validation.messageRequired": "El mensaje es obligatorio.",
-
-    // Accessibility
-    "accessibility.title": "Accesibilidad",
-    "accessibility.increaseFontSize": "Aumentar fuente",
-    "accessibility.decreaseFontSize": "Disminuir fuente",
-    "accessibility.toggleContrast": "Alto contraste",
-    "accessibility.reduceMotion": "Reducir animaciones",
-    "accessibility.screenReader": "Lector de pantalla",
-    "accessibility.fontSize": "Tamaño de fuente:",
-    "accessibility.active": "Activo",
-    "accessibility.inactive": "Inactivo",
-    "accessibility.reset": "Restaurar por defecto",
-
-    // Theme
-    "theme.light": "Modo claro",
-    "theme.dark": "Modo oscuro",
-    "theme.system": "Seguir sistema",
-
-    // Footer
-    "footer.rights": "Todos los derechos reservados.",
-    "footer.madeWith": "Hecho con",
-    "footer.by": "por",
-
-    // Common
-    "common.email": "Email",
-    "common.github": "GitHub",
-    "common.linkedin": "LinkedIn",
-    "common.location": "Ubicación",
-    "common.period": "Período",
-    "common.technologies": "Tecnologías",
-    "common.loading": "Cargando...",
-    "common.error": "Error",
-    "common.success": "Éxito",
-    "common.current": "Actual",
-    "common.code": "Código",
-    "common.liveDemo": "Demo en Vivo",
-    "common.webDevelopment": "Desarrollo Web",
-    "common.noExperienceAvailable": "No hay experiencia disponible.",
-  },
-  "pt-PT": {
-    // Navigation
-    "nav.home": "Início",
-    "nav.about": "Sobre",
-    "nav.skills": "Competências",
-    "nav.education": "Formação",
-    "nav.courses": "Cursos",
-    "nav.projects": "Projectos",
-    "nav.experience": "Experiência",
-    "nav.contact": "Contacto",
-    "nav.resume": "Currículo",
-
-    // Hero Section
-    "hero.role": "Programador Front-End & Fullstack Júnior",
-    "hero.greeting": "Olá, eu sou",
-    "hero.description":
-      "Programador Front-End júnior na SESA, criando soluções digitais inovadoras para a saúde pública com foco em acessibilidade, usabilidade e impacto social.",
-    "hero.viewProjects": "Ver Projectos",
-    "hero.contact": "Contacto",
-
-    // About Section
-    "about.title": "Sobre Mim",
-    "about.subtitle": "A minha trajectória e experiência",
-    "about.available": "Disponível para oportunidades",
-    "about.downloadResume": "Descarregar Currículo",
-    "about.description1":
-      "Olá! Sou Rafael Vieira Gogge, programador front-end em formação e apaixonado por criar soluções digitais com propósito. Actualmente trabalho na Secretaria de Estado da Saúde do Espírito Santo (SESA), onde contribuo para o desenvolvimento de sistemas voltados à comunicação institucional, visualização de dados públicos e à transformação digital de serviços.",
-    "about.description2":
-      "Também actuo como programador freelancer, criando projectos personalizados com foco em usabilidade, acessibilidade e automatização — desde bots e quizzes até sistemas web completos. Sou estudante de Análise e Desenvolvimento de Sistemas no Centro Universitário Salesiano – UniSales e também curso Gestão da Tecnologia da Informação na Multivix, o que me permite unir visão estratégica de TI com prática técnica no desenvolvimento.",
-    "about.description3":
-      "A minha trajectória começou na área administrativa, em ambientes públicos e privados, o que me proporcionou uma visão sistémica, foco em processos e habilidade de comunicação — competências que hoje aplico directamente na tecnologia. Tenho experiência com JavaScript, HTML, CSS, Bootstrap, Tailwind e Git, além de familiaridade com Python, Django e ferramentas de inteligência artificial. Nos meus projectos pessoais e profissionais, procuro sempre unir tecnologia, acessibilidade e impacto social. Estou em constante evolução, com o objectivo de me consolidar como programador front-end e explorar ainda mais o potencial da IA aplicada ao desenvolvimento.",
-    "about.name": "Nome",
-    "about.birth": "Nascimento",
-    "about.location": "Localização",
-    "about.linkedin": "LinkedIn",
-
-    // Skills Section
-    "skills.title": "Áreas de Actuação Técnica",
-    "skills.subtitle": "As minhas competências organizadas por especialidade",
-    "skills.frontend": "Front-End",
-    "skills.backend": "Back-End",
-    "skills.database": "Base de Dados",
-    "skills.automation": "Automatização e Nuvem",
-    "skills.frontend.description":
-      "Interfaces modernas, acessíveis e responsivas",
-    "skills.backend.description":
-      "APIs, regras de negócio e sistemas dinâmicos",
-    "skills.database.description": "Modelagem relacional e integração de dados",
-    "skills.automation.description":
-      "Automatização de processos e infraestrutura",
-
-    // Education Section
-    "education.title": "Formação Académica",
-    "education.subtitle": "A minha jornada de aprendizagem académica",
-    "education.ads": "Análise e Desenvolvimento de Sistemas",
-    "education.admin": "Administração",
-    "education.institution": "Centro Universitário Salesiano (UniSales)",
-    "education.completed": "Concluído",
-    "education.inProgress": "Em Progresso",
-    "education.suspended": "Suspenso",
-    "education.subjects": "Disciplinas:",
-    "education.learnings": "Principais Aprendizagens:",
-
-    // Complementary Courses Section
-    "courses.title": "Cursos Complementares",
-    "courses.subtitle": "Aperfeiçoamento técnico e profissional",
-    "courses.duration": "Duração",
-    "courses.certificate": "Certificado",
-    "courses.status": "Estado",
-    "courses.completed": "Concluído",
-    "courses.inProgress": "Em Progresso",
-    "courses.hours": "horas",
-
-    // Projects Section
-    "projects.title": "Projectos em Destaque",
-    "projects.subtitle": "Alguns dos meus trabalhos recentes",
-    "projects.liveDemo": "Demo ao Vivo",
-    "projects.code": "Código",
-    "projects.securitypass.title": "SecurityPass Pro",
-    "projects.securitypass.description":
-      "Sistema avançado para geração e análise de palavras-passe seguras com interface moderna e suporte PWA.",
-    "projects.events.title": "Painel de Eventos SSVS",
-    "projects.events.description":
-      "Painel institucional dinâmico para exibição de eventos da Subsecretaria de Vigilância em Saúde.",
-    "projects.wiki.title": "Wiki Institucional SESA",
-    "projects.wiki.description":
-      "Plataforma colaborativa de gestão do conhecimento com perfis de acesso público e privado.",
-    "projects.unilab.title":
-      "UniLab - Sistema Automatizado de Gestão de Horários para Agendamento de Laboratórios",
-    "projects.unilab.description":
-      "Plataforma educacional completa com sistema de agendamento, gestão de recursos e automatização de processos para laboratório universitário, desenvolvida para professores, funcionários e estudantes. Login de administrador: admin | Palavra-passe: admin",
-    "projects.quiz1.title": "Super Quiz Interactivo",
-    "projects.quiz1.description":
-      "Quiz gamificado para revisão da disciplina de Qualidade de Software.",
-    "projects.quiz2.title": "Quiz Master Web Service",
-    "projects.quiz2.description":
-      "Quiz temático focado em conceitos de Web Services e APIs (REST, SOAP, HTTP).",
-
-    // Experience Section
-    "experience.title": "Experiência Profissional",
-    "experience.subtitle": "A minha trajectória profissional",
-    "experience.current": "Presente",
-    "experience.freelancer.title": "Programador Freelancer",
-    "experience.freelancer.company": "Programador Front-end Remoto – Brasil",
-    "experience.freelancer.period": "Ago 2024 - Presente",
-    "experience.freelancer.description":
-      "Desenvolvimento de soluções web autorais com foco em acessibilidade, usabilidade e impacto real, utilizando JavaScript, Python, HTML5, CSS3, Bootstrap, Tailwind CSS, N8N, Github Copilot e ferramentas de IA. Desenvolvi quizzes interactivos, como o Super Quiz de Qualidade de Software e o Quiz Master Web Service, com lógica condicional, controlo de pontuação e feedback visual. Criação do UniLab, sistema académico completo para agendamento de laboratórios e envio de justificações, com autenticação, formulários dinâmicos e interface administrativa intuitiva. Desenvolvimento inicial do UniChat com N8N, bot no Telegram integrado ao UniLab, permitindo aos utilizadores consultar reservas, prazos e informações directamente pela aplicação, ampliando o acesso e a eficiência do sistema.",
-    "experience.sesa.title": "Programador Front-end",
-    "experience.sesa.company":
-      "Secretaria de Estado da Saúde do Espírito Santo - SESA (terceirizado via MGS)",
-    "experience.sesa.period": "Fev 2025 - Presente",
-    "experience.sesa.description":
-      "Desenvolvimento Front-end de sistemas internos voltados à comunicação institucional da Secretaria de Estado da Saúde do Espírito Santo (SESA) e da Subsecretaria de Vigilância em Saúde (SSVS), utilizando JavaScript, HTML5, CSS3, Bootstrap, Tailwind, Python, PostgreSQL, Django, Git, Gitlab e Github. Criação do Painel de Eventos da Subsecretaria de Vigilância em Saúde, plataforma dinâmica de exibição de eventos institucionais com filtros interactivos, personalização visual e geração de relatórios em tempo real. Modernização da Wiki Institucional da SESA, com foco em usabilidade, acessibilidade e organização de conteúdo colaborativo, facilitando o compartilhamento de documentos, tutoriais e processos internos entre servidores.",
-    "experience.alliance.title": "Supervisor de Manutenção Condominial",
-    "experience.alliance.company": "Alliance Gestão e Tecnologia LTDA",
-    "experience.alliance.period": "Abr 2023 - Abr 2025",
-    "experience.alliance.description":
-      "Gestão operacional de condomínios, controlo financeiro, atendimento ao cliente e coordenação de serviços programados utilizando Excel e plataformas especializadas.",
-
-    // Contact Section
-    "contact.title": "Entre em Contacto",
-    "contact.subtitle": "Vamos trabalhar juntos",
-    "contact.info": "Informações de Contacto",
-    "contact.status": "Estado Actual",
-    "contact.available":
-      "Disponível para qualquer trabalho na área da tecnologia. Entre em contacto para possíveis colaborações.",
-    "contact.email": "rafa.gogge@gmail.com",
-    "contact.location": "Vitória, ES - Brasil",
-    "contact.form.title": "Envie uma mensagem",
-    "contact.form.namePlaceholder": "O SEU NOME",
-    "contact.form.emailPlaceholder": "O SEU EMAIL",
-    "contact.form.subjectPlaceholder": "ASSUNTO",
-    "contact.form.messagePlaceholder": "DIGITE A SUA MENSAGEM",
-    "contact.form.submit": "Enviar Mensagem",
-    "contact.form.sending": "A enviar...",
-    "contact.form.successMessage":
-      "Mensagem enviada com sucesso! Entrarei em contacto em breve.",
-    "contact.form.errorMessage":
-      "Houve um problema. Tente novamente mais tarde.",
-    "contact.form.validation.nameRequired": "O nome é obrigatório.",
-    "contact.form.validation.emailRequired": "O email é obrigatório.",
-    "contact.form.validation.emailInvalid": "Formato de email inválido.",
-    "contact.form.validation.subjectRequired": "O assunto é obrigatório.",
-    "contact.form.validation.messageRequired": "A mensagem é obrigatória.",
-
-    // Accessibility
-    "accessibility.title": "Acessibilidade",
-    "accessibility.increaseFontSize": "Aumentar fonte",
-    "accessibility.decreaseFontSize": "Diminuir fonte",
-    "accessibility.toggleContrast": "Alto contraste",
-    "accessibility.reduceMotion": "Reduzir animações",
-    "accessibility.screenReader": "Leitor de ecrã",
-    "accessibility.fontSize": "Tamanho da fonte:",
-    "accessibility.active": "Activo",
-    "accessibility.inactive": "Inactivo",
-    "accessibility.reset": "Restaurar padrão",
-
-    // Theme
-    "theme.light": "Modo claro",
-    "theme.dark": "Modo escuro",
-    "theme.system": "Seguir sistema",
-
-    // Footer
-    "footer.rights": "Todos os direitos reservados.",
-    "footer.madeWith": "Feito com",
-    "footer.by": "por",
-
-    // Common
-    "common.email": "Email",
-    "common.github": "GitHub",
-    "common.linkedin": "LinkedIn",
-    "common.location": "Localização",
-    "common.period": "Período",
-    "common.technologies": "Tecnologias",
-    "common.loading": "A carregar...",
-    "common.error": "Erro",
-    "common.success": "Sucesso",
-    "common.current": "Actual",
-    "common.code": "Código",
-    "common.liveDemo": "Demo ao Vivo",
-    "common.webDevelopment": "Desenvolvimento Web",
-    "common.noExperienceAvailable": "Nenhuma experiência disponível.",
-  },
-} as const;
-
-export type TranslationKey = keyof (typeof translations)["pt-BR"];
+      "Mi trayectoria comenzó en el área administrativa, en ambientes públicos y privados, lo que me proporcionó una visión sistémica, enfoque en procesos e habilidad de comunicación — competencias que ahora aplico directamente en tecnología. Tengo experiencia com

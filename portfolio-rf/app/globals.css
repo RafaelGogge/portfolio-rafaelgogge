@@ -90,6 +90,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -182,19 +183,6 @@
   border-color: rgba(139, 92, 246, 0.5);
 }
 
-/* Green status indicators in light mode */
-.light .bg-green-500\/10 {
-  background-color: rgba(34, 197, 94, 0.1);
-}
-
-.light .border-green-500\/20 {
-  border-color: rgba(34, 197, 94, 0.2);
-}
-
-.light .text-green-400 {
-  color: #16a34a;
-}
-
 /* Purple accent colors in light mode */
 .light .bg-purple-500\/20 {
   background-color: rgba(139, 92, 246, 0.15);
@@ -244,9 +232,11 @@
   .animation-delay-2000 {
     animation-delay: 2s;
   }
+
   .animation-delay-4000 {
     animation-delay: 4s;
   }
+
   .animation-delay-6000 {
     animation-delay: 6s;
   }
@@ -256,22 +246,27 @@
   0% {
     transform: translate(0px, 0px) scale(1);
   }
+
   33% {
     transform: translate(30px, -50px) scale(1.1);
   }
+
   66% {
     transform: translate(-20px, 20px) scale(0.9);
   }
+
   100% {
     transform: translate(0px, 0px) scale(1);
   }
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(-5px) rotate(0.5deg);
   }
@@ -282,6 +277,7 @@
     transform: translateX(-100px);
     opacity: 0;
   }
+
   100% {
     transform: translateX(0);
     opacity: 1;
@@ -293,6 +289,7 @@
     transform: translateX(100px);
     opacity: 0;
   }
+
   100% {
     transform: translateX(0);
     opacity: 1;
@@ -304,6 +301,7 @@
     transform: translateY(50px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -315,6 +313,7 @@
     transform: scale(0.8);
     opacity: 0;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -325,6 +324,7 @@
   0% {
     background-position: -200px 0;
   }
+
   100% {
     background-position: calc(200px + 100%) 0;
   }
@@ -334,16 +334,19 @@
   0% {
     width: 0;
   }
+
   100% {
     width: 100%;
   }
 }
 
 @keyframes pulse-glow {
+
   0%,
   100% {
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
   }
+
   50% {
     box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
   }
@@ -353,6 +356,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -362,9 +366,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -376,12 +382,15 @@
     transform: translateY(-100%);
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   90% {
     opacity: 1;
   }
+
   100% {
     transform: translateY(100vh);
     opacity: 0;
@@ -393,9 +402,11 @@
     transform: translateX(-100%);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     transform: translateX(100%);
     opacity: 0;
@@ -403,19 +414,24 @@
 }
 
 @keyframes glitch {
+
   0%,
   100% {
     transform: translate(0);
   }
+
   20% {
     transform: translate(-2px, 2px);
   }
+
   40% {
     transform: translate(-2px, -2px);
   }
+
   60% {
     transform: translate(2px, 2px);
   }
+
   80% {
     transform: translate(2px, -2px);
   }
@@ -426,6 +442,7 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -436,25 +453,31 @@
   0% {
     content: "01001000 01100101 01101100 01101100 01101111";
   }
+
   25% {
     content: "01010100 01100101 01100011 01101000 01101110";
   }
+
   50% {
     content: "01000011 01101111 01100100 01100101 01110010";
   }
+
   75% {
     content: "01001000 01100001 01100011 01101011 01100101";
   }
+
   100% {
     content: "01010000 01110010 01101111 01100111 01110010";
   }
 }
 
 @keyframes terminal-cursor {
+
   0%,
   50% {
     opacity: 1;
   }
+
   51%,
   100% {
     opacity: 0;
@@ -466,12 +489,15 @@
     transform: translateX(-100%);
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   90% {
     opacity: 1;
   }
+
   100% {
     transform: translateX(100%);
     opacity: 0;
@@ -479,10 +505,12 @@
 }
 
 @keyframes circuit-pulse {
+
   0%,
   100% {
     box-shadow: 0 0 5px rgba(139, 92, 246, 0.5);
   }
+
   50% {
     box-shadow: 0 0 20px rgba(139, 92, 246, 0.8),
       0 0 30px rgba(139, 92, 246, 0.6);
@@ -490,6 +518,7 @@
 }
 
 @keyframes neon-flicker {
+
   0%,
   19%,
   21%,
@@ -502,6 +531,7 @@
       0 0 10px rgba(139, 92, 246, 0.5), 0 0 15px rgba(139, 92, 246, 0.5),
       0 0 20px rgba(139, 92, 246, 0.5);
   }
+
   20%,
   24%,
   55% {
@@ -510,10 +540,12 @@
 }
 
 @keyframes hologram {
+
   0%,
   100% {
     transform: translateZ(0);
   }
+
   50% {
     transform: translateZ(10px);
   }
@@ -524,9 +556,11 @@
     width: 0%;
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     width: 100%;
     opacity: 1;
@@ -560,12 +594,10 @@
 
 .animate-shimmer {
   animation: shimmer 2s infinite;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%);
   background-size: 200px 100%;
 }
 
@@ -637,27 +669,21 @@
 
 /* Enhanced Background Colors */
 .bg-zinc-900 {
-  background: linear-gradient(
-    135deg,
-    var(--background-dark) 0%,
-    #0f0f0f 100%
-  ) !important;
+  background: linear-gradient(135deg,
+      var(--background-dark) 0%,
+      #0f0f0f 100%) !important;
 }
 
 .bg-zinc-800 {
-  background: linear-gradient(
-    135deg,
-    var(--background-card) 0%,
-    #1a1a1a 100%
-  ) !important;
+  background: linear-gradient(135deg,
+      var(--background-card) 0%,
+      #1a1a1a 100%) !important;
 }
 
 .bg-zinc-800\/50 {
-  background: linear-gradient(
-    135deg,
-    rgba(17, 17, 17, 0.8) 0%,
-    rgba(26, 26, 26, 0.6) 100%
-  ) !important;
+  background: linear-gradient(135deg,
+      rgba(17, 17, 17, 0.8) 0%,
+      rgba(26, 26, 26, 0.6) 100%) !important;
   backdrop-filter: blur(10px);
 }
 
@@ -676,19 +702,19 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(0, 255, 0, 0.05) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle at 50% 50%,
+      rgba(0, 255, 0, 0.05) 0%,
+      transparent 70%);
   animation: grid-pulse 4s ease-in-out infinite;
 }
 
 @keyframes grid-pulse {
+
   0%,
   100% {
     opacity: 0.3;
   }
+
   50% {
     opacity: 0.8;
   }
@@ -696,16 +722,12 @@
 
 /* Matrix Background Enhancement */
 .matrix-bg {
-  background-image: radial-gradient(
-      circle at 25px 25px,
+  background-image: radial-gradient(circle at 25px 25px,
       var(--matrix-green) 2px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 75px 75px,
+      transparent 2px),
+    radial-gradient(circle at 75px 75px,
       rgba(0, 255, 0, 0.3) 1px,
-      transparent 1px
-    );
+      transparent 1px);
   background-size: 50px 50px;
   background-position: 0 0, 25px 25px;
   animation: matrix-drift 20s linear infinite;
@@ -715,6 +737,7 @@
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(-50px);
   }
@@ -722,17 +745,13 @@
 
 /* Terminal Enhancements */
 .terminal-bg {
-  background: linear-gradient(
-      135deg,
+  background: linear-gradient(135deg,
       var(--background-darker) 0%,
-      var(--background-dark) 100%
-    ),
+      var(--background-dark) 100%),
     radial-gradient(circle at 20% 80%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
-    radial-gradient(
-      circle at 80% 20%,
+    radial-gradient(circle at 80% 20%,
       rgba(0, 255, 255, 0.1) 0%,
-      transparent 50%
-    );
+      transparent 50%);
   border: 2px solid var(--terminal-green);
   box-shadow: 0 0 20px rgba(0, 255, 0, 0.2),
     inset 0 0 20px rgba(0, 255, 0, 0.05);
@@ -750,6 +769,7 @@
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 20px 20px;
   }
@@ -775,6 +795,7 @@
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 0 2px;
   }
@@ -820,13 +841,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 255, 0, 0.03) 0px,
-    rgba(0, 255, 0, 0.03) 1px,
-    transparent 1px,
-    transparent 3px
-  );
+  background: repeating-linear-gradient(0deg,
+      rgba(0, 255, 0, 0.03) 0px,
+      rgba(0, 255, 0, 0.03) 1px,
+      transparent 1px,
+      transparent 3px);
   animation: scanlines-move 0.1s linear infinite;
   pointer-events: none;
 }
@@ -835,6 +854,7 @@
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(3px);
   }
@@ -842,11 +862,9 @@
 
 /* Enhanced Button Styles */
 .btn-hacker {
-  background: linear-gradient(
-    135deg,
-    var(--background-card) 0%,
-    var(--background-dark) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--background-card) 0%,
+      var(--background-dark) 100%);
   border: 2px solid var(--hacker-green);
   color: var(--hacker-green);
   text-shadow: 0 0 10px var(--hacker-green);
@@ -862,12 +880,10 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 255, 0, 0.2),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(0, 255, 0, 0.2),
+      transparent);
   transition: left 0.5s ease;
 }
 
@@ -900,20 +916,20 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--hacker-green),
-    var(--cyber-blue),
-    var(--neon-purple)
-  );
+  background: linear-gradient(90deg,
+      var(--hacker-green),
+      var(--cyber-blue),
+      var(--neon-purple));
   animation: code-glow 2s ease-in-out infinite;
 }
 
 @keyframes code-glow {
+
   0%,
   100% {
     opacity: 0.5;
   }
+
   50% {
     opacity: 1;
   }
@@ -1045,15 +1061,13 @@ textarea:focus-visible {
 
 /* Enhanced Loading States */
 .loading-matrix {
-  background: linear-gradient(
-    45deg,
-    transparent 25%,
-    rgba(0, 255, 0, 0.1) 25%,
-    rgba(0, 255, 0, 0.1) 50%,
-    transparent 50%,
-    transparent 75%,
-    rgba(0, 255, 0, 0.1) 75%
-  );
+  background: linear-gradient(45deg,
+      transparent 25%,
+      rgba(0, 255, 0, 0.1) 25%,
+      rgba(0, 255, 0, 0.1) 50%,
+      transparent 50%,
+      transparent 75%,
+      rgba(0, 255, 0, 0.1) 75%);
   background-size: 20px 20px;
   animation: loading-move 1s linear infinite;
 }
@@ -1062,6 +1076,7 @@ textarea:focus-visible {
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 20px 20px;
   }
@@ -1119,6 +1134,7 @@ textarea:focus-visible {
 
 /* Print Styles */
 @media print {
+
   .terminal-matrix-bg,
   .terminal-glow,
   .terminal-scanlines {

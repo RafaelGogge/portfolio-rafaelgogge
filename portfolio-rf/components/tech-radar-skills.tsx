@@ -595,25 +595,22 @@ export function TechRadarSkills() {
                   {/* Popup de detalhes aprimorado - só aparece quando está selecionado e no centro */}
                   {selectedArea === key && (
                     <motion.div
-                      className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-0"
+                      className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-0 pointer-events-none"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                      style={{ pointerEvents: 'auto' }}
                       aria-modal="true"
                       role="dialog"
                       tabIndex={-1}
-                      onClick={() => setSelectedArea(null)}
                     >
                       <motion.div
-                        className="relative bg-zinc-900/98 backdrop-blur-xl border border-zinc-600/60 rounded-2xl p-6 w-full max-w-md shadow-2xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        className="relative bg-zinc-900/98 backdrop-blur-xl border border-zinc-600/60 rounded-2xl p-6 w-full max-w-md shadow-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 pointer-events-auto"
                         initial={{ scale: 0.85, y: 40 }}
                         animate={{ scale: 1, y: 0 }}
                         exit={{ scale: 0.85, y: 40 }}
                         transition={{ duration: 0.4, ease: 'easeOut' }}
                         style={{ boxShadow: `0 20px 60px ${area.color}30, 0 0 0 1px ${area.color}40, inset 0 0 20px rgba(0,0,0,0.5)` }}
-                        onClick={e => e.stopPropagation()}
                         tabIndex={0}
                         aria-label={`Detalhes da área ${area.title}`}
                       >
@@ -621,6 +618,7 @@ export function TechRadarSkills() {
                           className="absolute top-2 right-2 text-zinc-400 hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-full"
                           onClick={() => setSelectedArea(null)}
                           aria-label="Fechar detalhes"
+                          tabIndex={0}
                         >
                           ×
                         </button>

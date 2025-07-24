@@ -44,7 +44,9 @@ export async function POST(request: NextRequest) {
     });
 
     if (data.error) {
-      return NextResponse.json({ error: String(data.error) }, { status: 500 });
+      // Garante que o erro seja sempre string
+      const errorMsg = typeof data.error === "string" ? data.error : JSON.stringify(data.error);
+      return NextResponse.json({ error: errorMsg }, { status: 500 });
     }
 
     return NextResponse.json(

@@ -184,7 +184,7 @@ export function TechRadarSkills() {
             // Triggerar animação de blip se área foi recém-detectada
             if (!detectedAreas.has(key)) {
               newBlipAnimations.set(key, true);
-              // Remove blip animation após 1.5 segundos
+              // Removes blip animation após 1.5 segundos
               setTimeout(() => {
                 setBlipAnimations((prev: Map<string, boolean>) => {
                   const updated = new Map(prev);
@@ -216,13 +216,7 @@ export function TechRadarSkills() {
   };
 
   const handleAreaClick = (areaKey: string) => {
-    if (selectedArea === areaKey) {
-      // Se já está selecionado, desseleciona
-      setSelectedArea(null);
-    } else {
-      // Seleciona o item
-      setSelectedArea(areaKey);
-    }
+    setSelectedArea((prev) => (prev === areaKey ? null : areaKey));
   };
 
   return (
@@ -513,8 +507,6 @@ export function TechRadarSkills() {
               >
                 <motion.button
                   onClick={() => handleAreaClick(key)}
-                  onMouseEnter={() => setHoveredArea(key)}
-                  onMouseLeave={() => setHoveredArea(null)}
                   className="relative group focus:outline-none focus:ring-2 focus:ring-blue-400"
                   whileHover={{ scale: 1.15 }}
                   whileTap={{ scale: 0.9 }}
@@ -608,7 +600,7 @@ export function TechRadarSkills() {
                   </motion.div>
 
                   {/* Popup de detalhes aprimorado - só aparece quando está selecionado e no centro */}
-                  {isSelected && (
+                  {selectedArea === key && (
                     <motion.div
                       className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-0"
                       initial={{ opacity: 0 }}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Download,
   Github,
@@ -20,39 +20,26 @@ import { TypewriterEffect } from "./typewriter-effect";
 export function CreativeHero() {
   const { t, locale } = useI18n();
   const [mounted, setMounted] = useState(false);
-  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const handleDownloadCV = (language: string) => {
+  const handleDownloadCV = () => {
     const pdfFiles = {
-      "pt-BR": "/Curriculo_RafaelGogge.pdf",
-      "pt-PT": "/Curriculo_RafaelGogge_PT.pdf",
-      en: "/Curriculum_RafaelGogge.pdf",
-      es: "/Curriculum_RafaelGogge_ES.pdf",
+      "pt-BR": "/curriculos/Curriculo_RafaelGogge.pdf",
+      "en": "/curriculos/Curriculum_RafaelGogge.pdf",
     };
-
-    const pdfPath = pdfFiles[language as keyof typeof pdfFiles];
+    const pdfPath = pdfFiles[locale as keyof typeof pdfFiles];
     if (pdfPath) {
       const link = document.createElement("a");
       link.href = pdfPath;
-      link.download = `Rafael_Gogge_CV_${language}.pdf`;
+      link.download = `Rafael_Gogge_CV_${locale}.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     }
-
-    setIsResumeModalOpen(false);
   };
-
-  const resumeLanguages = [
-    { code: "pt-BR", name: "Português (Brasil)", flag: "🇧🇷" },
-    { code: "pt-PT", name: "Português (Portugal)", flag: "🇵🇹" },
-    { code: "en", name: "English", flag: "🇺🇸" },
-    { code: "es", name: "Español", flag: "🇪🇸" },
-  ];
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -179,7 +166,7 @@ export function CreativeHero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
         >
           <Button
-            onClick={() => setIsResumeModalOpen(true)}
+            onClick={handleDownloadCV}
             className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-3 rounded-lg transition-all duration-300 font-semibold border-2 border-blue-600 hover:border-blue-700"
           >
             <span className="relative z-10 flex items-center">
@@ -257,73 +244,6 @@ export function CreativeHero() {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Resume Language Selection Modal */}
-      <AnimatePresence>
-        {isResumeModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
-            onClick={() => setIsResumeModalOpen(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-slate-900 border border-slate-700 rounded-2xl p-8 max-w-md w-full mx-4 relative"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setIsResumeModalOpen(false)}
-                className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
-              >
-                <X className="h-6 w-6" />
-              </button>
-
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FileText className="h-8 w-8 text-blue-400" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  {locale === "pt"
-                    ? "Currículo - Rafael Vieira Gogge"
-                    : "Resume - Rafael Vieira Gogge"}
-                </h3>
-                <p className="text-slate-400">{t("hero.role")}</p>
-              </div>
-
-              <div className="space-y-3">
-                {resumeLanguages.map((language) => (
-                  <Button
-                    key={language.code}
-                    onClick={() => handleDownloadCV(language.code)}
-                    className="w-full justify-start text-left p-4 h-auto bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-blue-500 transition-all duration-300 group"
-                    variant="outline"
-                  >
-                    <span className="text-2xl mr-4 group-hover:scale-110 transition-transform">
-                      {language.flag}
-                    </span>
-                    <div>
-                      <p className="text-white font-medium">{language.name}</p>
-                      <p className="text-sm text-slate-400 mt-1">
-                        {language.code === "pt-BR" &&
-                          "Versão em português brasileiro"}
-                        {language.code === "pt-PT" &&
-                          "Versão em português de Portugal"}
-                        {language.code === "en" && "English version"}
-                        {language.code === "es" && "Versión en español"}
-                      </p>
-                    </div>
-                  </Button>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

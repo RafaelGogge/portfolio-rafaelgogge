@@ -6,22 +6,30 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email, subject, message } = await request.json();
 
+    // Validação básica dos campos
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
-        { error: "Todos os campos são obrigatórios" },
+        { error: "Todos os campos são obrigatórios." },
         { status: 400 }
       );
     }
 
-    if (!process.env.RESEND_API_KEY) {
+    // Validação de e-mail
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: "Email inválido." }, { status: 400 });
+    }
+
+    // Verifica variável de ambiente
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
       return NextResponse.json(
-        { error: "RESEND_API_KEY não definida" },
+        { error: "RESEND_API_KEY não definida no ambiente." },
         { status: 500 }
       );
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
+    const resend = new Resend(apiKey);
     const data = await resend.emails.send({
       from: "Portfolio Rafael Gogge <onboarding@resend.dev>",
       to: ["dev.rafaelgogge@gmail.com"],
@@ -36,7 +44,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (data.error) {
-      return NextResponse.json({ error: data.error }, { status: 500 });
+      return NextResponse.json({ error: String(data.error) }, { status: 500 });
     }
 
     return NextResponse.json(
@@ -44,6 +52,7 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
+    // Retorna erro detalhado para facilitar debug
     return NextResponse.json(
       { error: String(error) },
       { status: 500 }

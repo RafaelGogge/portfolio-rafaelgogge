@@ -305,58 +305,14 @@ export function ContactForm() {
             Envie uma mensagem
           </h4>
 
-          {/* Status Messages */}
-          <AnimatePresence mode="wait">
-            {formStatus === "success" && (
-              <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-green-400 mb-6"
-                role="alert"
-              >
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.2, type: "spring", stiffness: 500 }}
-                >
-                  <CheckCircle className="h-5 w-5" />
-                </motion.div>
-                <div>
-                  <p className="font-medium">Mensagem enviada com sucesso!</p>
-                  <p className="text-sm text-gray-400 mt-1">
-                    Retornarei o contato em breve.
-                  </p>
-                </div>
-              </motion.div>
-            )}
+          <div className="mb-6 p-4 bg-yellow-900/40 border border-yellow-700/40 rounded-lg text-yellow-300 text-center">
+            Este formulário está temporariamente desabilitado enquanto o site está em produção.<br />
+            Para entrar em contato, envie um e-mail diretamente para:
+            <span className="block mt-2 font-semibold text-yellow-200 select-all">dev.rafaelgogge@gmail.com</span>
+          </div>
 
-            {formStatus === "error" && (
-              <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                className="flex items-center gap-2 p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 mb-6"
-                role="alert"
-              >
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.2, type: "spring", stiffness: 500 }}
-                >
-                  <AlertCircle className="h-5 w-5" />
-                </motion.div>
-                <div>
-                  <p className="font-medium">Erro ao enviar mensagem</p>
-                  <p className="text-sm text-gray-400 mt-1">
-                    Tente novamente ou entre em contato diretamente.
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+          {/* Formulário desabilitado */}
+          <form className="space-y-6 opacity-50 pointer-events-none select-none" aria-disabled="true">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Nome */}
               <div className="space-y-1 relative">
@@ -369,31 +325,10 @@ export function ContactForm() {
                     id="name"
                     type="text"
                     placeholder="Seu nome completo"
-                    value={formData.name}
-                    onChange={(e) => handleInputChange("name", e.target.value)}
-                    onFocus={() => setFocusedField("name")}
-                    onBlur={() => setFocusedField(null)}
-                    aria-invalid={Boolean(errors.name)}
-                    aria-describedby={errors.name ? "name-error" : undefined}
-                    className={`pl-10 bg-zinc-900/50 border transition-colors duration-200 ${
-                      errors.name
-                        ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
-                        : "border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
-                    }`}
-                    required
+                    disabled
                   />
                 </div>
-                {errors.name && (
-                  <p
-                    id="name-error"
-                    role="alert"
-                    className="text-sm text-red-400 mt-1"
-                  >
-                    {errors.name}
-                  </p>
-                )}
               </div>
-
               {/* Email */}
               <div className="space-y-1 relative">
                 <label htmlFor="email" className="sr-only">
@@ -405,32 +340,11 @@ export function ContactForm() {
                     id="email"
                     type="email"
                     placeholder="seu@email.com"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange("email", e.target.value)}
-                    onFocus={() => setFocusedField("email")}
-                    onBlur={() => setFocusedField(null)}
-                    aria-invalid={Boolean(errors.email)}
-                    aria-describedby={errors.email ? "email-error" : undefined}
-                    className={`pl-10 bg-zinc-900/50 border transition-colors duration-200 ${
-                      errors.email
-                        ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
-                        : "border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
-                    }`}
-                    required
+                    disabled
                   />
                 </div>
-                {errors.email && (
-                  <p
-                    id="email-error"
-                    role="alert"
-                    className="text-sm text-red-400 mt-1"
-                  >
-                    {errors.email}
-                  </p>
-                )}
               </div>
             </div>
-
             {/* Assunto */}
             <div className="space-y-1 relative">
               <label htmlFor="subject" className="sr-only">
@@ -442,33 +356,10 @@ export function ContactForm() {
                   id="subject"
                   type="text"
                   placeholder="Assunto da mensagem"
-                  value={formData.subject}
-                  onChange={(e) => handleInputChange("subject", e.target.value)}
-                  onFocus={() => setFocusedField("subject")}
-                  onBlur={() => setFocusedField(null)}
-                  aria-invalid={Boolean(errors.subject)}
-                  aria-describedby={
-                    errors.subject ? "subject-error" : undefined
-                  }
-                  className={`pl-10 bg-zinc-900/50 border transition-colors duration-200 ${
-                    errors.subject
-                      ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
-                      : "border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
-                  }`}
-                  required
+                  disabled
                 />
               </div>
-              {errors.subject && (
-                <p
-                  id="subject-error"
-                  role="alert"
-                  className="text-sm text-red-400 mt-1"
-                >
-                  {errors.subject}
-                </p>
-              )}
             </div>
-
             {/* Mensagem */}
             <div className="space-y-1 relative">
               <label htmlFor="message" className="sr-only">
@@ -479,87 +370,17 @@ export function ContactForm() {
                 <Textarea
                   id="message"
                   placeholder="Descreva sua proposta, projeto ou oportunidade..."
-                  value={formData.message}
-                  onChange={(e) => handleInputChange("message", e.target.value)}
-                  onFocus={() => setFocusedField("message")}
-                  onBlur={() => setFocusedField(null)}
-                  rows={5}
-                  aria-invalid={Boolean(errors.message)}
-                  aria-describedby={
-                    errors.message ? "message-error" : undefined
-                  }
-                  className={`pl-10 pt-3 bg-zinc-900/50 border transition-colors duration-200 resize-none ${
-                    errors.message
-                      ? "border-red-500 focus:border-red-600 focus:ring-red-600/20"
-                      : "border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
-                  }`}
-                  required
+                  disabled
                 />
               </div>
-              {errors.message && (
-                <p
-                  id="message-error"
-                  role="alert"
-                  className="text-sm text-red-400 mt-1"
-                >
-                  {errors.message}
-                </p>
-              )}
             </div>
-
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Button
-                type="submit"
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0 relative overflow-hidden group py-3"
-                disabled={isSubmitting}
-                aria-busy={isSubmitting}
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600"
-                  initial={{ x: "-100%" }}
-                  animate={{ x: isSubmitting ? "0%" : "-100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-                <span className="relative z-10 flex items-center justify-center">
-                  {isSubmitting ? (
-                    <>
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 1,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }}
-                        className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
-                      />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="mr-2 h-4 w-4" />
-                      Enviar Mensagem
-                    </>
-                  )}
-                </span>
+            <motion.div>
+              <Button type="submit" className="w-full" disabled>
+                <Send className="mr-2 h-4 w-4" />
+                Enviar Mensagem
               </Button>
             </motion.div>
           </form>
-
-          <div className="mt-6 pt-6 border-t border-zinc-700/50">
-            <p className="text-sm text-gray-400 text-center">
-              Ou entre em contato diretamente via{" "}
-              <button
-                onClick={() => copyToClipboard("dev.rafaelgogge@gmail.com")}
-                className="text-purple-400 hover:text-purple-300 transition-colors underline"
-              >
-                dev.rafaelgogge@gmail.com
-              </button>
-            </p>
-          </div>
         </motion.div>
       </div>
     </>

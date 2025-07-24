@@ -212,6 +212,113 @@ export const translations = {
     "terminal.hack": "Hackeando o mainframe... Acesso autorizado! 🔓",
     "terminal.exit": "Sessão do terminal encerrada."
   },
+  "pt-PT": {
+    // Navegação
+    "nav.home": "Início",
+    "nav.about": "Sobre",
+    "nav.skills": "Competências",
+    "nav.education": "Formação",
+    "nav.courses": "Cursos",
+    "nav.projects": "Projetos",
+    "nav.experience": "Experiência",
+    "nav.contact": "Contacto",
+
+    // Hero Section
+    "hero.role": "Desenvolvedor Frontend",
+    "hero.greeting": "Olá, eu sou",
+    "hero.description":
+      "Desenvolvedor Front-End júnior na SESA, a criar soluções digitais inovadoras para a saúde pública com foco em acessibilidade, usabilidade e impacto social.",
+    "hero.viewProjects": "Ver Projetos",
+    "hero.contact": "Contacto",
+
+    // About Section
+    "about.title": "Sobre Mim",
+    "about.subtitle": "O meu percurso e experiência",
+    "about.description1":
+      "Olá! Sou o Rafael Vieira Gogge, desenvolvedor front-end em formação e apaixonado por criar soluções digitais com propósito. Atualmente trabalho na Secretaria de Estado da Saúde do Espírito Santo (SESA), onde contribuo para o desenvolvimento de sistemas voltados à comunicação institucional, visualização de dados públicos e à transformação digital de serviços.",
+    "about.description2":
+      "Também atuo como freelancer, criando projetos personalizados com foco em usabilidade, acessibilidade e automação — desde bots e quizzes até sistemas web completos. Sou estudante de Análise e Desenvolvimento de Sistemas pelo Centro Universitário Salesiano – UniSales e também curso Gestão da Tecnologia da Informação pela Multivix, o que me permite unir visão estratégica de TI com prática técnica no desenvolvimento.",
+    "about.description3":
+      "O meu percurso começou na área administrativa, em ambientes públicos e privados, o que me proporcionou uma visão sistémica, foco em processos e habilidade de comunicação — competências que hoje aplico diretamente na tecnologia. Tenho experiência com JavaScript, HTML, CSS, Bootstrap, Tailwind e Git, além de familiaridade com Python, Django e ferramentas de inteligência artificial. Nos meus projetos pessoais e profissionais, procuro sempre unir tecnologia, acessibilidade e impacto social. Estou em constante evolução, com o objetivo de me consolidar como desenvolvedor front-end e explorar ainda mais o potencial da IA aplicada ao desenvolvimento.",
+    "about.name": "Nome",
+    "about.birth": "Nascimento",
+    "about.location": "Localização",
+    "about.linkedin": "LinkedIn",
+
+    // Skills Section
+    "skills.title": "Áreas de Atuação Técnica",
+    "skills.subtitle": "As minhas competências organizadas por especialidade",
+    "skills.frontend": "Front-End",
+    "skills.backend": "Back-End",
+    "skills.database": "Base de Dados",
+    "skills.automation": "Automação & Cloud",
+    "skills.frontend.description":
+      "Interfaces modernas, acessíveis e responsivas",
+    "skills.backend.description":
+      "APIs, regras de negócio e sistemas dinâmicos",
+    "skills.database.description": "Modelação relacional e integração de dados",
+    "skills.automation.description": "Automação de processos e infraestrutura",
+
+    // Contact Section
+    "contact.title": "Contacte-me",
+    "contact.subtitle": "Vamos trabalhar juntos",
+    "contact.info": "Informações de Contacto",
+    "contact.email": "rafa.gogge@gmail.com",
+    "contact.location": "Vitória, ES - Brasil",
+    "contact.form.title": "Envie uma mensagem",
+    "contact.form.namePlaceholder": "O SEU NOME",
+    "contact.form.emailPlaceholder": "O SEU E-MAIL",
+    "contact.form.subjectPlaceholder": "ASSUNTO",
+    "contact.form.messagePlaceholder": "ESCREVA A SUA MENSAGEM",
+    "contact.form.submit": "Enviar Mensagem",
+    "contact.form.sending": "A enviar...",
+    "contact.form.successMessage":
+      "Mensagem enviada com sucesso! Entrarei em contacto em breve.",
+    "contact.form.errorMessage":
+      "Ocorreu um problema. Por favor, tente novamente mais tarde.",
+    "contact.form.validation.nameRequired": "O nome é obrigatório.",
+    "contact.form.validation.emailRequired": "O email é obrigatório.",
+    "contact.form.validation.emailInvalid": "Formato de email inválido.",
+    "contact.form.validation.subjectRequired": "O assunto é obrigatório.",
+    "contact.form.validation.messageRequired": "A mensagem é obrigatória.",
+
+    // Footer
+    "footer.rights": "Todos os direitos reservados.",
+    "footer.madeWith": "Feito com",
+    "footer.by": "por",
+
+    // Common
+    "common.email": "Email",
+    "common.github": "GitHub",
+    "common.linkedin": "LinkedIn",
+    "common.location": "Localização",
+    "common.period": "Período",
+    "common.technologies": "Tecnologias",
+    "common.loading": "A carregar...",
+    "common.error": "Erro",
+    "common.success": "Sucesso",
+    "common.current": "Atual",
+    "common.code": "Código",
+    "common.liveDemo": "Demo ao Vivo",
+    "common.webDevelopment": "Desenvolvimento Web",
+    "common.noExperienceAvailable": "Nenhuma experiência disponível.",
+    "footer.tagline": "A criar soluções digitais inovadoras",
+    "hero.scrollDown": "scroll --down",
+
+    // Terminal
+    "terminal.help":
+      "Comandos disponíveis: help, clear, whoami, skills, projects, contact, matrix, hack, exit",
+    "terminal.whoami": "Rafael Vieira Gogge - Desenvolvedor Frontend",
+    "terminal.skills":
+      "Habilidades: React, TypeScript, Next.js, Node.js, Python, HTML5, CSS3, JavaScript",
+    "terminal.projects":
+      "Projetos: UniLab, SecurityPass Pro, Wiki SESA, Quiz Master, e mais...",
+    "terminal.contact":
+      "Email: rafaelgogge@gmail.com | LinkedIn: linkedin.com/in/rafaelgogge",
+    "terminal.matrix": "Entrando na Matrix... 🔴💊",
+    "terminal.hack": "Hackeando o mainframe... Acesso autorizado! 🔓",
+    "terminal.exit": "Sessão do terminal encerrada."
+  },
   en: {
     // Navigation
     "nav.home": "Home",
@@ -431,7 +538,7 @@ export const translations = {
     "about.description2":
       "También trabajo como desarrollador freelancer, criando projetos personalizados com enfoque em usabilidade, acessibilidade e automatização — desde bots e quizzes até sistemas web completos. Soy estudante de Análise e Desenvolvimento de Sistemas en el Centro Universitário Salesiano – UniSales e também curso Gestão da Tecnologia da Informação en Multivix, o que me permite unir visão estratégica de TI com prática técnica no desenvolvimento.",
     "about.description3":
-      "Mi trajetória começou na área administrativa, em ambientes públicos e privados, o que me proporcionou uma visão sistêmica, foco em processos e habilidade de comunicação — competências que agora aplico diretamente na tecnologia. Tenho experiência com JavaScript, HTML, CSS, Bootstrap, Tailwind e Git, além de familiaridade com Python, Django e ferramentas de inteligência artificial. Nos meus projetos pessoais e profissionais, procuro sempre unir tecnologia, acessibilidade e impacto social. Estou em constante evolução, com o objetivo de me consolidar como desenvolvedor front-end e explorar ainda mais o potencial da IA aplicada ao desenvolvimento.",
+      "Mi trajetória começou na área administrativa, em ambientes públicos e privados, o que me proporcionou uma visão sistémica, foco em processos e habilidade de comunicação — competências que agora aplico diretamente na tecnologia. Tenho experiência com JavaScript, HTML, CSS, Bootstrap, Tailwind e Git, além de familiaridade com Python, Django e ferramentas de inteligência artificial. Nos meus projetos pessoais e profissionais, procuro sempre unir tecnologia, acessibilidade e impacto social. Estou em constante evolução, com o objetivo de me consolidar como desenvolvedor front-end e explorar ainda mais o potencial da IA aplicada ao desenvolvimento.",
     "about.name": "Nome",
     "about.birth": "Nascimento",
     "about.location": "Localização",

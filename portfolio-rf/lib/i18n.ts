@@ -22,6 +22,7 @@ export const translations = {
     "nav.projects": "Projetos",
     "nav.experience": "Experiência",
     "nav.contact": "Contato",
+    "nav.resume": "Download do Currículo",
 
     // Hero Section
     "hero.role": "Desenvolvedor Frontend",
@@ -214,6 +215,7 @@ export const translations = {
     "nav.projects": "Projects",
     "nav.experience": "Experience",
     "nav.contact": "Contact",
+    "nav.resume": "Download Resume",
 
     // Hero Section
     "hero.role": "Frontend Developer",

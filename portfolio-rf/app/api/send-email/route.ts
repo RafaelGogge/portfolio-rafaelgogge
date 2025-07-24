@@ -19,6 +19,21 @@ export async function POST(request: NextRequest) {
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
+    if (!process.env.RESEND_API_KEY) {
+      console.error("RESEND_API_KEY não definida");
+      return NextResponse.json({ error: "RESEND_API_KEY não definida" }, { status: 500 });
+    }
+    // Teste simples de envio para debug
+    const test = await resend.emails.send({
+      from: "Portfolio Rafael Gogge <onboarding@resend.dev>",
+      to: ["dev.rafaelgogge@gmail.com"],
+      subject: "Teste de envio Resend API",
+      html: "<p>Testando integração Resend via Vercel/Next.js</p>",
+    });
+    console.log("Resultado do teste Resend:", test);
+    if (test.error) {
+      return NextResponse.json({ error: test.error }, { status: 500 });
+    }
 
     const toYou = await resend.emails.send({
       from: "Portfolio Rafael Gogge <onboarding@resend.dev>",

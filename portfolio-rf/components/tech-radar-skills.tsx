@@ -610,76 +610,77 @@ export function TechRadarSkills() {
                   {/* Popup de detalhes aprimorado - só aparece quando está selecionado e no centro */}
                   {isSelected && (
                     <motion.div
-                      className="absolute top-full left-1/2 transform -translate-x-1/2 mt-6 bg-zinc-900/98 backdrop-blur-xl border border-zinc-600/60 rounded-2xl p-6 min-w-80 z-50 shadow-2xl"
-                      initial={{ opacity: 0, y: -15, scale: 0.85 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -15, scale: 0.85 }}
-                      transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }}
-                      style={{
-                        boxShadow: `0 20px 60px ${area.color}30, 0 0 0 1px ${area.color}40, inset 0 0 20px rgba(0,0,0,0.5)`,
-                        zIndex: 1000,
-                      }}
+                      className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-0"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      style={{ pointerEvents: 'auto' }}
+                      aria-modal="true"
+                      role="dialog"
+                      tabIndex={-1}
+                      onClick={() => setSelectedArea(null)}
                     >
-                      <div className="flex items-center gap-3 mb-4">
-                        <div 
-                          className="p-2 rounded-xl"
-                          style={{ 
-                            backgroundColor: `${area.color}20`,
-                            boxShadow: `inset 0 0 20px ${area.color}30`
-                          }}
+                      <motion.div
+                        className="relative bg-zinc-900/98 backdrop-blur-xl border border-zinc-600/60 rounded-2xl p-6 w-full max-w-md shadow-2xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        initial={{ scale: 0.85, y: 40 }}
+                        animate={{ scale: 1, y: 0 }}
+                        exit={{ scale: 0.85, y: 40 }}
+                        transition={{ duration: 0.4, ease: 'easeOut' }}
+                        style={{ boxShadow: `0 20px 60px ${area.color}30, 0 0 0 1px ${area.color}40, inset 0 0 20px rgba(0,0,0,0.5)` }}
+                        onClick={e => e.stopPropagation()}
+                        tabIndex={0}
+                        aria-label={`Detalhes da área ${area.title}`}
+                      >
+                        <button
+                          className="absolute top-2 right-2 text-zinc-400 hover:text-red-400 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-full"
+                          onClick={() => setSelectedArea(null)}
+                          aria-label="Fechar detalhes"
                         >
-                          <IconComponent
-                            className="w-6 h-6"
-                            style={{ color: area.color }}
-                          />
-                        </div>
-                        <h3
-                          className="text-xl font-bold tracking-wide"
-                          style={{ color: area.color }}
-                        >
-                          {area.title}
-                        </h3>
-                      </div>
-
-                      <div className="space-y-3">
-                        {area.skills.map((skill, index) => (
-                          <motion.div
-                            key={skill.name}
-                            className="flex items-center justify-between p-2 bg-zinc-800/50 rounded-lg border border-zinc-700/50"
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
+                          ×
+                        </button>
+                        <div className="flex items-center gap-3 mb-4">
+                          <div 
+                            className="p-2 rounded-xl"
+                            style={{ backgroundColor: `${area.color}20`, boxShadow: `inset 0 0 20px ${area.color}30` }}
                           >
-                            <span className="text-sm font-medium text-zinc-200">
-                              {skill.name}
-                            </span>
-                            <div className="flex items-center gap-3">
-                              <div className="w-20 h-3 bg-zinc-700/80 rounded-full overflow-hidden border border-zinc-600/50">
-                                <motion.div
-                                  className="h-full rounded-full"
-                                  style={{ 
-                                    backgroundColor: area.color,
-                                    boxShadow: `inset 0 0 10px ${area.color}60`
-                                  }}
-                                  initial={{ width: 0 }}
-                                  animate={{ width: `${skill.level}%` }}
-                                  transition={{
-                                    delay: index * 0.1 + 0.4,
-                                    duration: 1,
-                                    ease: "easeOut"
-                                  }}
-                                />
-                              </div>
-                              <span 
-                                className="text-sm font-bold w-10 text-right font-mono"
-                                style={{ color: area.color }}
-                              >
-                                {skill.level}%
+                            <IconComponent className="w-6 h-6" style={{ color: area.color }} />
+                          </div>
+                          <h3 className="text-xl font-bold tracking-wide" style={{ color: area.color }}>
+                            {area.title}
+                          </h3>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {area.skills.map((skill, index) => (
+                            <motion.div
+                              key={skill.name}
+                              className="flex flex-col gap-1 bg-zinc-800/70 rounded-lg p-3 border border-zinc-700/50 shadow"
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: index * 0.08 }}
+                            >
+                              <span className="text-zinc-200 font-medium text-base flex items-center gap-2">
+                                <span className="inline-block w-2 h-2 rounded-full" style={{ background: area.color }} />
+                                {skill.name}
                               </span>
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-full h-2 bg-zinc-700/80 rounded-full overflow-hidden border border-zinc-600/50">
+                                  <motion.div
+                                    className="h-full rounded-full"
+                                    style={{ backgroundColor: area.color, boxShadow: `inset 0 0 10px ${area.color}60` }}
+                                    initial={{ width: 0 }}
+                                    animate={{ width: `${skill.level}%` }}
+                                    transition={{ delay: index * 0.08 + 0.2, duration: 0.8, ease: 'easeOut' }}
+                                  />
+                                </div>
+                                <span className="text-xs font-bold w-10 text-right font-mono" style={{ color: area.color }}>
+                                  {skill.level}%
+                                </span>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
                     </motion.div>
                   )}
                 </motion.button>
@@ -688,33 +689,6 @@ export function TechRadarSkills() {
           })}
         </div>
       </div>
-
-      {/* Legenda textual acessível do radar de competências */}
-      <section
-        className="w-full max-w-2xl mt-8 mb-2 p-4 rounded-xl bg-zinc-900/90 border border-zinc-700/60 shadow-lg"
-        aria-label="Legenda do Radar de Competências"
-      >
-        <h3 className="text-lg md:text-xl font-bold mb-3 text-blue-300">Legenda do Radar de Competências</h3>
-        <ul className="space-y-4">
-          {Object.entries(skillsData).map(([key, area]) => (
-            <li key={key} className="">
-              <div className="flex items-center gap-2 mb-1">
-                <area.icon className="w-5 h-5" style={{ color: area.color }} aria-hidden="true" />
-                <span className="font-semibold text-base" style={{ color: area.color }}>{area.title}</span>
-              </div>
-              <ul className="ml-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-1">
-                {area.skills.map((skill) => (
-                  <li key={skill.name} className="flex items-center gap-2 text-zinc-200 text-sm">
-                    <span className="sr-only">{area.title}:</span>
-                    <span>{skill.name}</span>
-                    <span className="ml-1 text-xs text-zinc-400">({skill.level}%)</span>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </section>
 
       {/* Footer com instruções aprimorado */}
       <motion.div

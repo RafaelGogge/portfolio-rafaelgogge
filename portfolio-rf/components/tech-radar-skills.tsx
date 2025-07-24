@@ -510,9 +510,11 @@ export function TechRadarSkills() {
                   onClick={() => handleAreaClick(key)}
                   onMouseEnter={() => setHoveredArea(key)}
                   onMouseLeave={() => setHoveredArea(null)}
-                  className="relative group"
+                  className="relative group focus:outline-none focus:ring-2 focus:ring-blue-400"
                   whileHover={{ scale: 1.15 }}
                   whileTap={{ scale: 0.9 }}
+                  aria-label={`Área ${area.title}`}
+                  tabIndex={0}
                 >
                   {/* Efeito blip aprimorado */}
                   {hasBlipAnimation && (
@@ -680,6 +682,33 @@ export function TechRadarSkills() {
           })}
         </div>
       </div>
+
+      {/* Legenda textual acessível do radar de competências */}
+      <section
+        className="w-full max-w-2xl mt-8 mb-2 p-4 rounded-xl bg-zinc-900/90 border border-zinc-700/60 shadow-lg"
+        aria-label="Legenda do Radar de Competências"
+      >
+        <h3 className="text-lg md:text-xl font-bold mb-3 text-blue-300">Legenda do Radar de Competências</h3>
+        <ul className="space-y-4">
+          {Object.entries(skillsData).map(([key, area]) => (
+            <li key={key} className="">
+              <div className="flex items-center gap-2 mb-1">
+                <area.icon className="w-5 h-5" style={{ color: area.color }} aria-hidden="true" />
+                <span className="font-semibold text-base" style={{ color: area.color }}>{area.title}</span>
+              </div>
+              <ul className="ml-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-1">
+                {area.skills.map((skill) => (
+                  <li key={skill.name} className="flex items-center gap-2 text-zinc-200 text-sm">
+                    <span className="sr-only">{area.title}:</span>
+                    <span>{skill.name}</span>
+                    <span className="ml-1 text-xs text-zinc-400">({skill.level}%)</span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       {/* Footer com instruções aprimorado */}
       <motion.div

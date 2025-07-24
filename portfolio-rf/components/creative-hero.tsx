@@ -13,7 +13,14 @@ import {
   Code,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogClose,
+} from "@/components/ui/dialog";
 import { useI18n } from "@/hooks/use-i18n";
 import { FloatingCode } from "./floating-code";
 import { TypewriterEffect } from "./typewriter-effect";
@@ -21,6 +28,7 @@ import { TypewriterEffect } from "./typewriter-effect";
 export function CreativeHero() {
   const { t, locale } = useI18n();
   const [mounted, setMounted] = useState(false);
+  const [openCVModal, setOpenCVModal] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -150,23 +158,76 @@ export function CreativeHero() {
           transition={{ delay: 1.2, duration: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
         >
-          <a
-            href={
-              locale === "en"
-                ? "/curriculos/Curriculum_RafaelGogge.pdf"
-                : "/curriculos/Curriculo_RafaelGogge.pdf"
-            }
-            download={
-              locale === "en"
-                ? "Rafael_Gogge_CV_en.pdf"
-                : "Rafael_Gogge_CV_pt-BR.pdf"
-            }
-            className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-3 rounded-lg transition-all duration-300 font-semibold border-2 border-blue-600 hover:border-blue-700 flex items-center justify-center"
-            aria-label={t("nav.resume")}
-          >
-            <Download className="mr-2 h-5 w-5" />
-            {t("nav.resume")}
-          </a>
+          <Dialog open={openCVModal} onOpenChange={setOpenCVModal}>
+            <DialogTrigger asChild>
+              <Button
+                variant="default"
+                size="lg"
+                className="gap-2 bg-blue-600 text-white hover:bg-blue-700 border-2 border-blue-600 hover:border-blue-700 shadow-lg focus-visible:ring-2 focus-visible:ring-blue-400"
+                aria-label={t("nav.resume")}
+                data-testid="cv-download-btn"
+              >
+                <Download className="h-5 w-5" />
+                {t("nav.resume")}
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-xs text-center">
+              <DialogHeader>
+                <DialogTitle>
+                  {locale === "en"
+                    ? "Select your CV language"
+                    : "Selecione o idioma do currículo"}
+                </DialogTitle>
+              </DialogHeader>
+              <div className="flex flex-col gap-3 mt-2">
+                <a
+                  href="/curriculos/Curriculo_RafaelGogge.pdf"
+                  download="Rafael_Gogge_CV_pt-BR.pdf"
+                  className={`w-full px-4 py-2 rounded font-medium border-2 transition-colors flex items-center justify-center gap-2 ${
+                    locale === "pt-BR"
+                      ? "bg-blue-600 text-white border-blue-600"
+                      : "bg-zinc-800 text-zinc-200 border-zinc-700 hover:bg-blue-700 hover:text-white hover:border-blue-700"
+                  }`}
+                  onClick={() => setOpenCVModal(false)}
+                >
+                  <span role="img" aria-label="Português">
+                    🇧🇷
+                  </span>{" "}
+                  Português
+                  {locale === "pt-BR" && (
+                    <span className="ml-2 text-xs">(Recomendado)</span>
+                  )}
+                </a>
+                <a
+                  href="/curriculos/Curriculum_RafaelGogge.pdf"
+                  download="Rafael_Gogge_CV_en.pdf"
+                  className={`w-full px-4 py-2 rounded font-medium border-2 transition-colors flex items-center justify-center gap-2 ${
+                    locale === "en"
+                      ? "bg-blue-600 text-white border-blue-600"
+                      : "bg-zinc-800 text-zinc-200 border-zinc-700 hover:bg-blue-700 hover:text-white hover:border-blue-700"
+                  }`}
+                  onClick={() => setOpenCVModal(false)}
+                >
+                  <span role="img" aria-label="English">
+                    🇺🇸
+                  </span>{" "}
+                  English
+                  {locale === "en" && (
+                    <span className="ml-2 text-xs">(Recommended)</span>
+                  )}
+                </a>
+              </div>
+              <DialogClose asChild>
+                <Button
+                  variant="ghost"
+                  className="mt-4 w-full"
+                  onClick={() => setOpenCVModal(false)}
+                >
+                  {locale === "en" ? "Close" : "Fechar"}
+                </Button>
+              </DialogClose>
+            </DialogContent>
+          </Dialog>
         </motion.div>
 
         {/* Social Links */}

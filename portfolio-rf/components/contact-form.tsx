@@ -167,16 +167,29 @@ export function ContactForm() {
     setFormStatus("idle");
 
     try {
-      // Simula o envio do formulário
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      setFormStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      toast({
-        title: "Mensagem enviada!",
-        description: "Obrigado pelo contato. Retornarei em breve!",
-        variant: "default",
+      // Envia o formulário para a API
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
+      if (response.ok) {
+        setFormStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        toast({
+          title: "Mensagem enviada!",
+          description: "Obrigado pelo contato. Retornarei em breve!",
+          variant: "default",
+        });
+      } else {
+        setFormStatus("error");
+        const data = await response.json();
+        toast({
+          title: "Erro ao enviar mensagem",
+          description: data.error || "Tente novamente mais tarde.",
+          variant: "destructive",
+        });
+      }
     } catch (error) {
       console.error("Submission error:", error);
       setFormStatus("error");

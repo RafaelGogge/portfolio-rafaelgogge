@@ -18,7 +18,8 @@ export function LanguageSelector() {
         size="sm"
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 text-zinc-400 hover:text-white hover:bg-zinc-700/50"
-        aria-label="Selecionar idioma"
+        aria-label="Selecionar idioma (Language Selector)"
+        data-testid="language-selector"
       >
         <Globe className="h-4 w-4" />
         <span className="text-sm">{languages[language].flag}</span>

@@ -16,9 +16,6 @@ import {
   Linkedin,
   Globe,
   Calendar,
-  Clock,
-  Briefcase,
-  Download,
   Copy,
   ExternalLink,
   Check,
@@ -39,7 +36,6 @@ export function ContactForm() {
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   // Armazenar erros de validação por campo
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -80,24 +76,6 @@ export function ContactForm() {
       color: "text-blue-400",
       bgColor: "bg-blue-500/10",
       hoverColor: "hover:bg-blue-500/20",
-      copyable: false,
-    },
-    {
-      icon: Briefcase,
-      label: "Status",
-      value: "Disponível para oportunidades",
-      color: "text-blue-400",
-      bgColor: "bg-blue-500/10",
-      hoverColor: "hover:bg-blue-500/20",
-      copyable: false,
-    },
-    {
-      icon: Clock,
-      label: "Horário",
-      value: "Seg-Sex: 8h às 18h (UTC-3)",
-      color: "text-yellow-400",
-      bgColor: "bg-yellow-500/10",
-      hoverColor: "hover:bg-yellow-500/20",
       copyable: false,
     },
   ];
@@ -141,34 +119,6 @@ export function ContactForm() {
       console.error("Failed to copy text: ", err);
     }
   };
-
-  const handleDownloadCV = (language: string) => {
-    const pdfFiles = {
-      "pt-BR": "/Curriculo_RafaelGogge.pdf",
-      "pt-PT": "/Curriculo_RafaelGogge_PT.pdf",
-      en: "/Curriculum_RafaelGogge.pdf",
-      es: "/Curriculum_RafaelGogge_ES.pdf",
-    };
-
-    const pdfPath = pdfFiles[language as keyof typeof pdfFiles];
-    if (pdfPath) {
-      const link = document.createElement("a");
-      link.href = pdfPath;
-      link.download = `Rafael_Vieira_Gogge_CV_${language}.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-
-    setIsResumeModalOpen(false);
-  };
-
-  const resumeLanguages = [
-    { code: "pt-BR", name: "Português (Brasil)", flag: "🇧🇷" },
-    { code: "pt-PT", name: "Português (Portugal)", flag: "🇵🇹" },
-    { code: "en", name: "English", flag: "🇺🇸" },
-    { code: "es", name: "Español", flag: "🇪🇸" },
-  ];
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -328,47 +278,6 @@ export function ContactForm() {
               ))}
             </div>
           </div>
-
-          {/* Status Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20 rounded-lg"
-          >
-            <div className="flex items-center space-x-3 mb-3">
-              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-              <h4 className="text-green-400 font-semibold">
-                Status: Disponível
-              </h4>
-            </div>
-            <p className="text-gray-300 text-sm mb-4">
-              Atualmente aberto para oportunidades de trabalho full-time e
-              projetos freelance.
-            </p>
-            <div className="flex space-x-3">
-              <Button
-                size="sm"
-                className="bg-green-500/20 text-green-400 hover:bg-green-500/30 border border-green-500/50"
-                onClick={() =>
-                  window.open("https://calendly.com/rafaelgogge", "_blank")
-                }
-              >
-                <Calendar className="w-4 h-4 mr-2" />
-                Agendar Reunião
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className="border-gray-600 text-gray-400 hover:bg-gray-600/20"
-                onClick={() => setIsResumeModalOpen(true)}
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Baixar CV
-              </Button>
-            </div>
-          </motion.div>
         </motion.div>
 
         {/* Contact Form */}
@@ -640,73 +549,6 @@ export function ContactForm() {
           </div>
         </motion.div>
       </div>
-
-      {/* Resume Language Selection Modal */}
-      <AnimatePresence>
-        {isResumeModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
-            onClick={() => setIsResumeModalOpen(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-zinc-900 border border-zinc-700 rounded-2xl p-8 max-w-md w-full mx-4 relative"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setIsResumeModalOpen(false)}
-                className="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors"
-              >
-                <X className="h-6 w-6" />
-              </button>
-
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FileText className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Escolha o idioma do currículo
-                </h3>
-                <p className="text-zinc-400">
-                  Selecione o idioma no qual deseja baixar o currículo
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                {resumeLanguages.map((language) => (
-                  <Button
-                    key={language.code}
-                    onClick={() => handleDownloadCV(language.code)}
-                    className="w-full justify-start text-left p-4 h-auto bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 hover:border-purple-500 transition-all duration-300 group"
-                    variant="outline"
-                  >
-                    <span className="text-2xl mr-4 group-hover:scale-110 transition-transform">
-                      {language.flag}
-                    </span>
-                    <div>
-                      <p className="text-white font-medium">{language.name}</p>
-                      <p className="text-sm text-zinc-400 mt-1">
-                        {language.code === "pt-BR" &&
-                          "Versão em português brasileiro"}
-                        {language.code === "pt-PT" &&
-                          "Versão em português de Portugal"}
-                        {language.code === "en" && "English version"}
-                        {language.code === "es" && "Versión en español"}
-                      </p>
-                    </div>
-                  </Button>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }

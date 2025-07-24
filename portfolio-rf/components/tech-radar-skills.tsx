@@ -475,41 +475,37 @@ export function TechRadarSkills() {
             const isHovered = hoveredArea === key;
             const hasBlipAnimation = blipAnimations.has(key);
             
-            // Centralização inteligente: calcula o centro do container e ajusta o offset para todos os tamanhos
+            // Centralização refinada: calcula o centro do container e ajusta o offset para todos os tamanhos
             const radius = getRadius();
             const circularPosition = getCircularPosition(area.angle, radius);
-            // Corrige o offset para centralizar todos os círculos, independente do tamanho do texto
-            const itemSize = isSelected ? 120 : (screenSize === "small" ? 70 : 80);
-            const offsetX = -itemSize / 2;
-            const offsetY = -itemSize / 2;
+            // O valor de -50% centraliza perfeitamente, sem depender do tamanho do item
 
             return (
               <motion.div
                 key={key}
                 className={`absolute ${isSelected ? 'z-50' : 'z-20'}`}
                 animate={{
-                  x: circularPosition.x + offsetX,
-                  y: circularPosition.y + offsetY,
+                  left: `calc(50% + ${circularPosition.x}px)`,
+                  top: `calc(50% + ${circularPosition.y}px)`,
                   scale: isDetected || isSelected || !radarActive ? 1 : 0.4,
                   opacity: isDetected || isSelected || !radarActive ? 1 : 0.4,
                 }}
-                transition={{ 
+                transition={{
                   type: "spring",
                   stiffness: 300,
                   damping: 30,
                   duration: 0.8
                 }}
-                initial={{ 
-                  x: circularPosition.x + offsetX,
-                  y: circularPosition.y + offsetY,
-                  scale: 0, 
-                  opacity: 0 
+                initial={{
+                  left: `calc(50% + ${circularPosition.x}px)`,
+                  top: `calc(50% + ${circularPosition.y}px)`,
+                  scale: 0,
+                  opacity: 0
                 }}
                 style={{
-                  left: "50%",
-                  top: "50%",
-                  width: itemSize,
-                  height: itemSize,
+                  transform: 'translate(-50%, -50%)',
+                  width: isSelected ? 120 : (screenSize === "small" ? 70 : 80),
+                  height: isSelected ? 120 : (screenSize === "small" ? 70 : 80),
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',

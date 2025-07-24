@@ -20,10 +20,16 @@ import { TypewriterEffect } from "./typewriter-effect";
 export function CreativeHero() {
   const { t, locale } = useI18n();
   const [mounted, setMounted] = useState(false);
+  const [currentLocale, setCurrentLocale] = useState(locale);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Atualiza o locale sempre que mudar
+  useEffect(() => {
+    setCurrentLocale(locale);
+  }, [locale]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -151,12 +157,12 @@ export function CreativeHero() {
         >
           <a
             href={
-              locale === "en"
+              currentLocale === "en"
                 ? "/curriculos/Curriculum_RafaelGogge.pdf"
                 : "/curriculos/Curriculo_RafaelGogge.pdf"
             }
             download={
-              locale === "en"
+              currentLocale === "en"
                 ? "Rafael_Gogge_CV_en.pdf"
                 : "Rafael_Gogge_CV_pt-BR.pdf"
             }

@@ -163,66 +163,49 @@ export function CreativeHero() {
               <Button
                 variant="default"
                 size="lg"
-                className="gap-2 bg-blue-600 text-white hover:bg-blue-700 border-2 border-blue-600 hover:border-blue-700 shadow-lg focus-visible:ring-2 focus-visible:ring-blue-400"
+                className="gap-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-0 shadow-xl hover:from-blue-700 hover:to-purple-700 hover:scale-105 focus-visible:ring-2 focus-visible:ring-blue-400 transition-all duration-200"
                 aria-label={t("nav.resume")}
                 data-testid="cv-download-btn"
+                style={{ boxShadow: '0 4px 24px 0 rgba(80, 70, 229, 0.25)' }}
               >
                 <Download className="h-5 w-5" />
                 {t("nav.resume")}
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-xs text-center">
+            <DialogContent className="max-w-sm text-center bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 border-0 shadow-2xl p-8 rounded-2xl">
               <DialogHeader>
-                <DialogTitle>
-                  {locale === "en"
-                    ? "Select your CV language"
-                    : "Selecione o idioma do currículo"}
+                <DialogTitle className="text-2xl font-bold text-white mb-2 flex flex-col items-center gap-2">
+                  <Download className="h-8 w-8 text-blue-400 mb-1 animate-bounce" />
+                  {locale === "en" ? "Download your CV" : "Download do Currículo"}
                 </DialogTitle>
               </DialogHeader>
-              <div className="flex flex-col gap-3 mt-2">
+              <p className="text-zinc-300 mb-6 text-base">
+                {locale === "en"
+                  ? "Choose your preferred language to download the CV."
+                  : "Escolha o idioma desejado para baixar o currículo."}
+              </p>
+              <div className="flex flex-col gap-4">
                 <a
                   href="/curriculos/Curriculo_RafaelGogge.pdf"
                   download="Rafael_Gogge_CV_pt-BR.pdf"
-                  className={`w-full px-4 py-2 rounded font-medium border-2 transition-colors flex items-center justify-center gap-2 ${
-                    locale === "pt-BR"
-                      ? "bg-blue-600 text-white border-blue-600"
-                      : "bg-zinc-800 text-zinc-200 border-zinc-700 hover:bg-blue-700 hover:text-white hover:border-blue-700"
-                  }`}
+                  className={`flex items-center justify-center gap-3 w-full px-5 py-3 rounded-lg font-semibold text-lg border-2 transition-all duration-200 shadow-sm hover:scale-105 focus-visible:ring-2 focus-visible:ring-blue-400 ${locale === "pt-BR" ? "bg-blue-600 text-white border-blue-600" : "bg-zinc-800 text-zinc-200 border-zinc-700 hover:bg-blue-700 hover:text-white hover:border-blue-700"}`}
                   onClick={() => setOpenCVModal(false)}
                 >
-                  <span role="img" aria-label="Português">
-                    🇧🇷
-                  </span>{" "}
-                  Português
-                  {locale === "pt-BR" && (
-                    <span className="ml-2 text-xs">(Recomendado)</span>
-                  )}
+                  <span className="text-2xl">🇧🇷</span> Português
+                  {locale === "pt-BR" && <span className="ml-2 text-xs bg-blue-700 text-white px-2 py-0.5 rounded">Recomendado</span>}
                 </a>
                 <a
                   href="/curriculos/Curriculum_RafaelGogge.pdf"
                   download="Rafael_Gogge_CV_en.pdf"
-                  className={`w-full px-4 py-2 rounded font-medium border-2 transition-colors flex items-center justify-center gap-2 ${
-                    locale === "en"
-                      ? "bg-blue-600 text-white border-blue-600"
-                      : "bg-zinc-800 text-zinc-200 border-zinc-700 hover:bg-blue-700 hover:text-white hover:border-blue-700"
-                  }`}
+                  className={`flex items-center justify-center gap-3 w-full px-5 py-3 rounded-lg font-semibold text-lg border-2 transition-all duration-200 shadow-sm hover:scale-105 focus-visible:ring-2 focus-visible:ring-blue-400 ${locale === "en" ? "bg-blue-600 text-white border-blue-600" : "bg-zinc-800 text-zinc-200 border-zinc-700 hover:bg-blue-700 hover:text-white hover:border-blue-700"}`}
                   onClick={() => setOpenCVModal(false)}
                 >
-                  <span role="img" aria-label="English">
-                    🇺🇸
-                  </span>{" "}
-                  English
-                  {locale === "en" && (
-                    <span className="ml-2 text-xs">(Recommended)</span>
-                  )}
+                  <span className="text-2xl">🇺🇸</span> English
+                  {locale === "en" && <span className="ml-2 text-xs bg-blue-700 text-white px-2 py-0.5 rounded">Recommended</span>}
                 </a>
               </div>
               <DialogClose asChild>
-                <Button
-                  variant="ghost"
-                  className="mt-4 w-full"
-                  onClick={() => setOpenCVModal(false)}
-                >
+                <Button variant="ghost" className="mt-6 w-full text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all duration-200">
                   {locale === "en" ? "Close" : "Fechar"}
                 </Button>
               </DialogClose>

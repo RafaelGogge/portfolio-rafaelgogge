@@ -475,16 +475,21 @@ export function TechRadarSkills() {
             const isHovered = hoveredArea === key;
             const hasBlipAnimation = blipAnimations.has(key);
             
+            // Centralização inteligente: calcula o centro do container e ajusta o offset para todos os tamanhos
             const radius = getRadius();
             const circularPosition = getCircularPosition(area.angle, radius);
+            // Corrige o offset para centralizar todos os círculos, independente do tamanho do texto
+            const itemSize = isSelected ? 120 : (screenSize === "small" ? 70 : 80);
+            const offsetX = -itemSize / 2;
+            const offsetY = -itemSize / 2;
 
             return (
               <motion.div
                 key={key}
                 className={`absolute ${isSelected ? 'z-50' : 'z-20'}`}
                 animate={{
-                  x: isSelected ? (key === 'frontend' ? -25 : 0) : circularPosition.x, // Frontend vai mais à esquerda quando selecionado
-                  y: isSelected ? (key === 'frontend' ? -20 : -10) : circularPosition.y, // Frontend vai mais para cima quando selecionado
+                  x: circularPosition.x + offsetX,
+                  y: circularPosition.y + offsetY,
                   scale: isDetected || isSelected || !radarActive ? 1 : 0.4,
                   opacity: isDetected || isSelected || !radarActive ? 1 : 0.4,
                 }}
@@ -495,15 +500,19 @@ export function TechRadarSkills() {
                   duration: 0.8
                 }}
                 initial={{ 
-                  x: circularPosition.x,
-                  y: circularPosition.y,
+                  x: circularPosition.x + offsetX,
+                  y: circularPosition.y + offsetY,
                   scale: 0, 
                   opacity: 0 
                 }}
                 style={{
                   left: "50%",
                   top: "50%",
-                  transform: "translate(-50%, -50%)",
+                  width: itemSize,
+                  height: itemSize,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               >
                 <motion.button
@@ -515,6 +524,7 @@ export function TechRadarSkills() {
                   whileTap={{ scale: 0.9 }}
                   aria-label={`Área ${area.title}`}
                   tabIndex={0}
+                  style={{ width: '100%', height: '100%' }}
                 >
                   {/* Efeito blip aprimorado */}
                   {hasBlipAnimation && (

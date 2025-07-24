@@ -21,17 +21,10 @@ import { TypewriterEffect } from "./typewriter-effect";
 export function CreativeHero() {
   const { t, locale } = useI18n();
   const [mounted, setMounted] = useState(false);
-  const [currentLocale, setCurrentLocale] = useState(locale);
-  const [showCVModal, setShowCVModal] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  // Atualiza o locale sempre que mudar
-  useEffect(() => {
-    setCurrentLocale(locale);
-  }, [locale]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -157,62 +150,23 @@ export function CreativeHero() {
           transition={{ delay: 1.2, duration: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
         >
-          <Button
-            onClick={() => setShowCVModal(true)}
+          <a
+            href={
+              locale === "en"
+                ? "/curriculos/Curriculum_RafaelGogge.pdf"
+                : "/curriculos/Curriculo_RafaelGogge.pdf"
+            }
+            download={
+              locale === "en"
+                ? "Rafael_Gogge_CV_en.pdf"
+                : "Rafael_Gogge_CV_pt-BR.pdf"
+            }
             className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-3 rounded-lg transition-all duration-300 font-semibold border-2 border-blue-600 hover:border-blue-700 flex items-center justify-center"
             aria-label={t("nav.resume")}
-            data-testid="cv-download-btn"
           >
             <Download className="mr-2 h-5 w-5" />
             {t("nav.resume")}
-          </Button>
-
-          <Dialog open={showCVModal} onOpenChange={setShowCVModal}>
-            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/60">
-              <div className="bg-zinc-900 rounded-lg p-6 shadow-lg w-full max-w-xs flex flex-col gap-4 items-center">
-                <h2 className="text-lg font-semibold text-white mb-2">
-                  Selecione o idioma do currículo
-                </h2>
-                <a
-                  href="/curriculos/Curriculo_RafaelGogge.pdf"
-                  download="Rafael_Gogge_CV_pt-BR.pdf"
-                  className={`w-full px-4 py-2 rounded text-center font-medium transition-colors border-2 mb-2 ${
-                    locale === "pt-BR"
-                      ? "bg-blue-600 text-white border-blue-600"
-                      : "bg-zinc-800 text-zinc-200 border-zinc-700 hover:bg-blue-700 hover:text-white hover:border-blue-700"
-                  }`}
-                  onClick={() => setShowCVModal(false)}
-                >
-                  🇧🇷 Currículo em Português
-                  {locale === "pt-BR" && (
-                    <span className="ml-2 text-xs">(Recomendado)</span>
-                  )}
-                </a>
-                <a
-                  href="/curriculos/Curriculum_RafaelGogge.pdf"
-                  download="Rafael_Gogge_CV_en.pdf"
-                  className={`w-full px-4 py-2 rounded text-center font-medium transition-colors border-2 ${
-                    locale === "en"
-                      ? "bg-blue-600 text-white border-blue-600"
-                      : "bg-zinc-800 text-zinc-200 border-zinc-700 hover:bg-blue-700 hover:text-white hover:border-blue-700"
-                  }`}
-                  onClick={() => setShowCVModal(false)}
-                >
-                  🇺🇸 Curriculum in English
-                  {locale === "en" && (
-                    <span className="ml-2 text-xs">(Recommended)</span>
-                  )}
-                </a>
-                <Button
-                  variant="ghost"
-                  className="mt-2 text-zinc-400 hover:text-white"
-                  onClick={() => setShowCVModal(false)}
-                >
-                  Fechar
-                </Button>
-              </div>
-            </div>
-          </Dialog>
+          </a>
         </motion.div>
 
         {/* Social Links */}

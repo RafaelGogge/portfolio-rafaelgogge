@@ -25,22 +25,6 @@ export function CreativeHero() {
     setMounted(true);
   }, []);
 
-  const handleDownloadCV = () => {
-    const pdfFiles = {
-      "pt-BR": "/curriculos/Curriculo_RafaelGogge.pdf",
-      "en": "/curriculos/Curriculum_RafaelGogge.pdf",
-    };
-    const pdfPath = pdfFiles[locale as keyof typeof pdfFiles];
-    if (pdfPath) {
-      const link = document.createElement("a");
-      link.href = pdfPath;
-      link.download = `Rafael_Gogge_CV_${locale}.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  };
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -165,15 +149,23 @@ export function CreativeHero() {
           transition={{ delay: 1.2, duration: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
         >
-          <Button
-            onClick={handleDownloadCV}
-            className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-3 rounded-lg transition-all duration-300 font-semibold border-2 border-blue-600 hover:border-blue-700"
+          <a
+            href={
+              locale === "en"
+                ? "/curriculos/Curriculum_RafaelGogge.pdf"
+                : "/curriculos/Curriculo_RafaelGogge.pdf"
+            }
+            download={
+              locale === "en"
+                ? "Rafael_Gogge_CV_en.pdf"
+                : "Rafael_Gogge_CV_pt-BR.pdf"
+            }
+            className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-3 rounded-lg transition-all duration-300 font-semibold border-2 border-blue-600 hover:border-blue-700 flex items-center justify-center"
+            aria-label={t("nav.resume")}
           >
-            <span className="relative z-10 flex items-center">
-              <Download className="mr-2 h-5 w-5" />
-              {t("nav.resume")}
-            </span>
-          </Button>
+            <Download className="mr-2 h-5 w-5" />
+            {t("nav.resume")}
+          </a>
 
           <Button
             onClick={() => scrollToSection("contact")}

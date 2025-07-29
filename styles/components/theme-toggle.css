@@ -1,0 +1,54 @@
+/* Theme Toggle Component Styles */
+
+.theme-toggle {
+  @apply rounded-full transition-all duration-300 shadow-lg;
+}
+
+.theme-toggle.light {
+  @apply bg-white/90 text-zinc-600 hover:bg-white hover:text-zinc-900;
+  @apply border border-zinc-200 hover:border-zinc-300;
+  @apply shadow-zinc-200/50 hover:shadow-zinc-300/50;
+}
+
+.theme-toggle.dark {
+  @apply bg-zinc-800/90 text-zinc-400 hover:bg-zinc-800 hover:text-white;
+  @apply border border-zinc-700 hover:border-zinc-600;
+  @apply shadow-zinc-800/50 hover:shadow-zinc-700/50;
+}
+
+.theme-toggle.system {
+  @apply bg-gradient-to-r from-zinc-800/90 to-zinc-700/90;
+  @apply text-blue-400 hover:text-blue-300;
+  @apply border border-zinc-600 hover:border-blue-500/50;
+  @apply shadow-blue-500/20 hover:shadow-blue-500/30;
+}
+
+.theme-toggle-icon {
+  @apply w-4 h-4 transition-transform duration-200;
+}
+
+.theme-toggle:hover .theme-toggle-icon {
+  @apply scale-110;
+}
+
+.theme-toggle-animation {
+  @apply transition-all duration-200 ease-out;
+}
+
+/* Theme specific backgrounds for different contexts */
+.theme-toggle-nav {
+  @apply backdrop-blur-sm;
+}
+
+.theme-toggle-nav.light {
+  @apply bg-white/70 hover:bg-white/90;
+}
+
+.theme-toggle-nav.dark {
+  @apply bg-zinc-900/70 hover:bg-zinc-900/90;
+}
+
+.theme-toggle-nav.system {
+  @apply bg-gradient-to-r from-zinc-900/70 to-zinc-800/70;
+  @apply hover:from-zinc-900/90 hover:to-zinc-800/90;
+}

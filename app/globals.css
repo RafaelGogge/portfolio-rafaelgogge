@@ -193,124 +193,75 @@
 
 /* Enhanced Light Theme */
 .light {
-  background: linear-gradient(135deg, #fdfcf7 0%, #eaf6ff 50%, #fffbe6 100%);
-  color: #bfa14a;
-  /* dourado escuro */
+  background: linear-gradient(135deg,
+      hsl(var(--card)) 0%,
+      hsl(var(--popover)) 50%,
+      hsl(var(--background)) 100%);
+  color: hsl(var(--foreground));
 }
 
 /* Light theme component overrides */
-.light .bg-zinc-900 {
-  background-color: #fffbe6;
-  /* branco com toque dourado */
-  border: 1px solid #f3e9c7;
-  /* dourado claro */
-  box-shadow: 0 1px 6px 0 rgba(191, 161, 74, 0.08);
-}
-
-.light .bg-zinc-800 {
-  background-color: #f6faff;
-  /* branco azulado */
-  border: 1px solid #eaf6ff;
-}
-
-.light .text-white {
-  color: #bfa14a;
-  /* dourado escuro */
-}
-
-.light .text-zinc-400,
-.light .text-gray-300,
-.light .text-zinc-300,
-.light .text-gray-500 {
-  color: var(--foreground) !important;
-}
-
-.light .border-zinc-700 {
-  border-color: #f3e9c7;
-  /* dourado claro */
-}
-
-.light .border-zinc-800 {
-  border-color: #eaf6ff;
-  /* azul claro */
-}
-
-.light .border-zinc-800\/50 {
-  border-color: rgba(234, 246, 255, 0.5);
-}
-
-/* Cards and containers in light mode */
-.light .bg-zinc-800\/50 {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(243, 233, 199, 0.6);
-  /* dourado claro */
-  backdrop-filter: blur(12px);
-}
-
-/* Gradients in light mode */
-.light .from-purple-500 {
-  --tw-gradient-from: #f5e7b2;
-  /* dourado claro */
-}
-
-.light .to-pink-500 {
-  --tw-gradient-to: #eaf6ff;
-  /* azul claro */
-}
-
-/* Floating nav in light mode */
-.light .bg-zinc-900\/80 {
-  background-color: rgba(255, 251, 230, 0.95);
-  /* branco dourado translúcido */
-  backdrop-filter: blur(20px);
-  border-color: rgba(243, 233, 199, 0.5);
-}
-
-/* Buttons in light mode */
-.light .hover\:bg-zinc-700\/50:hover {
-  background-color: rgba(243, 233, 199, 0.5);
-  /* dourado claro translúcido */
-}
-
-.light .hover\:bg-zinc-800:hover {
-  background-color: #f6faff;
-  /* branco azulado */
-}
-
-/* Project cards in light mode */
-.light .hover\:border-purple-500\/50:hover {
-  border-color: rgba(191, 161, 74, 0.5);
-  /* dourado escuro translúcido */
-}
-
-/* Purple accent colors in light mode */
-.light .bg-purple-500\/20 {
-  background-color: rgba(245, 231, 178, 0.15);
-  /* dourado claro translúcido */
-}
-
-.light .text-purple-400 {
-  color: #bfa14a;
-  /* dourado escuro */
-}
-
-/* Melhorando a navbar no modo claro */
 .light .bg-zinc-900,
 .light .bg-zinc-900\/80,
 .light .navbar-backdrop {
-  background: hsl(245, 95%, 65%) !important;
-  /* Roxo claro elegante */
-  color: #fff !important;
-  /* Texto branco */
-  border-bottom: 1px solid hsl(245, 95%, 70%);
-  box-shadow: 0 2px 12px 0 rgba(80, 0, 255, 0.08);
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  border-bottom: 1px solid hsl(var(--ring));
+  box-shadow: 0 2px 12px 0 hsl(var(--primary) / 0.08);
+}
+
+.light .bg-zinc-800 {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+}
+
+.light .bg-zinc-800\/50 {
+  background-color: hsl(var(--card) / 0.95);
+  border: 1px solid hsl(var(--border) / 0.6);
+  backdrop-filter: blur(12px);
+}
+
+.light .text-white,
+.light .text-purple-400,
+.light .text-zinc-400,
+.light .text-zinc-300,
+.light .text-gray-300,
+.light .text-gray-500 {
+  color: hsl(var(--foreground)) !important;
+}
+
+.light .border-zinc-700,
+.light .border-zinc-800,
+.light .border-zinc-800\/50 {
+  border-color: hsl(var(--border)) !important;
+}
+
+.light .from-purple-500 {
+  --tw-gradient-from: hsl(var(--accent));
+}
+
+.light .to-pink-500 {
+  --tw-gradient-to: hsl(var(--popover));
+}
+
+.light .hover\:bg-zinc-700\/50:hover,
+.light .hover\:bg-zinc-800:hover {
+  background-color: hsl(var(--muted)) !important;
+}
+
+.light .hover\:border-purple-500\/50:hover {
+  border-color: hsl(var(--accent) / 0.5) !important;
+}
+
+.light .bg-purple-500\/20 {
+  background-color: hsl(var(--accent) / 0.15) !important;
 }
 
 /* Garante contraste para links e itens da navbar no modo claro */
 .light .navbar-backdrop a,
 .light .navbar-backdrop .text-foreground,
 .light .navbar-backdrop .text-white {
-  color: #fff !important;
+  color: hsl(var(--primary-foreground)) !important;
 }
 
 /* Improved accessibility panel positioning */

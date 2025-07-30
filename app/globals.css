@@ -128,37 +128,56 @@
   }
 
   .light {
-    --background: 220 60% 98%;
-    /* branco azulado */
-    --foreground: 44 100% 40%;
-    /* dourado escuro para textos principais */
-    --card: 220 60% 99%;
-    /* quase branco */
-    --card-foreground: 44 100% 35%;
-    /* dourado mais escuro */
-    --popover: 220 60% 99%;
-    --popover-foreground: 44 100% 35%;
-    --primary: 44 100% 55%;
-    /* dourado */
-    --primary-foreground: 220 60% 98%;
-    --secondary: 210 40% 96%;
-    /* branco azulado suave */
-    --secondary-foreground: 44 100% 40%;
-    --muted: 220 40% 95%;
-    --muted-foreground: 220 15% 60%;
-    --accent: 200 80% 92%;
-    /* azul claro sofisticado */
-    --accent-foreground: 44 100% 40%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 44 100% 85%;
-    /* dourado claro para bordas */
-    --input: 220 40% 95%;
-    --ring: 44 100% 55%;
-    /* dourado */
+    --background: 0 0% 100%;
+    /* Fundo branco */
+    --foreground: 222 47% 11%;
+    /* Texto escuro */
+    --card: 0 0% 98%;
+    /* Fundo de cards claro */
+    --card-foreground: 222 47% 11%;
+    /* Texto em cards */
+    --popover: 0 0% 98%;
+    /* Fundo de popovers */
+    --popover-foreground: 222 47% 11%;
+    /* Texto em popovers */
+    --primary: 245 95% 65%;
+    /* Roxo claro elegante */
+    --primary-foreground: 0 0% 100%;
+    /* Texto sobre primário */
+    --secondary: 291 64% 52%;
+    /* Roxo médio sofisticado */
+    --secondary-foreground: 0 0% 100%;
+    /* Texto sobre secundário */
+    --accent: 36 100% 60%;
+    /* Dourado quente */
+    --accent-foreground: 222 47% 11%;
+    /* Texto sobre dourado */
+    --muted: 0 0% 93%;
+    /* Cinza claro */
+    --muted-foreground: 222 20% 30%;
+    /* Cinza escuro para texto muted */
+    --destructive: 0 84% 60%;
+    /* Vermelho elegante */
+    --destructive-foreground: 0 0% 100%;
+    /* Texto sobre erro */
+    --warning: 36 100% 60%;
+    /* Amarelo vibrante */
+    --warning-foreground: 222 47% 11%;
+    /* Texto sobre aviso */
+    --success: 142 71% 45%;
+    /* Verde mais suave */
+    --success-foreground: 222 47% 11%;
+    /* Texto sobre sucesso */
+    --border: 0 0% 90%;
+    /* Borda cinza leve */
+    --input: 0 0% 95%;
+    /* Fundo de input */
+    --ring: 245 95% 70%;
+    /* Cor de foco (roxo claro) */
     --radius: 0.5rem;
-    --gradient-main: linear-gradient(90deg, hsl(44, 100%, 55%) 0%, hsl(200, 80%, 92%) 100%);
-    --gradient-accent: linear-gradient(90deg, hsl(44, 100%, 65%) 0%, hsl(220, 60%, 98%) 100%);
+    /* Raio de borda */
+    --gradient-main: linear-gradient(90deg, hsl(245, 95%, 65%) 0%, hsl(291, 64%, 52%) 100%);
+    --gradient-accent: linear-gradient(90deg, hsl(36, 100%, 60%) 0%, hsl(172, 66%, 60%) 100%);
   }
 }
 

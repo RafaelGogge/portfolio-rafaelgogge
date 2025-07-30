@@ -129,53 +129,53 @@
 
   .light {
     --background: 0 0% 100%;
-    /* Fundo branco */
+    /* Branco puro, base clara */
     --foreground: 222 47% 11%;
-    /* Texto escuro */
-    --card: 0 0% 98%;
-    /* Fundo de cards claro */
+    /* Texto escuro, legível */
+    --card: 40 100% 97%;
+    /* Champagne suave (#FFE8B0) */
     --card-foreground: 222 47% 11%;
     /* Texto em cards */
-    --popover: 0 0% 98%;
-    /* Fundo de popovers */
+    --popover: 224 100% 97%;
+    /* Azul porcelana (#E1ECFF) */
     --popover-foreground: 222 47% 11%;
     /* Texto em popovers */
     --primary: 245 95% 65%;
     /* Roxo claro elegante */
     --primary-foreground: 0 0% 100%;
-    /* Texto sobre primário */
+    /* Texto branco no roxo */
     --secondary: 291 64% 52%;
     /* Roxo médio sofisticado */
     --secondary-foreground: 0 0% 100%;
-    /* Texto sobre secundário */
-    --accent: 36 100% 60%;
-    /* Dourado quente */
+    /* Texto branco no secundário */
+    --accent: 45 100% 70%;
+    /* Dourado moderno (#FFD167) */
     --accent-foreground: 222 47% 11%;
     /* Texto sobre dourado */
-    --muted: 0 0% 93%;
-    /* Cinza claro */
+    --muted: 240 20% 96%;
+    /* Cinza claro com tom refinado */
     --muted-foreground: 222 20% 30%;
-    /* Cinza escuro para texto muted */
+    /* Texto cinza escuro */
     --destructive: 0 84% 60%;
-    /* Vermelho elegante */
+    /* Vermelho vibrante */
     --destructive-foreground: 0 0% 100%;
-    /* Texto sobre erro */
+    /* Texto branco no erro */
     --warning: 36 100% 60%;
     /* Amarelo vibrante */
     --warning-foreground: 222 47% 11%;
     /* Texto sobre aviso */
     --success: 142 71% 45%;
-    /* Verde mais suave */
+    /* Verde suave e elegante */
     --success-foreground: 222 47% 11%;
     /* Texto sobre sucesso */
-    --border: 0 0% 90%;
-    /* Borda cinza leve */
-    --input: 0 0% 95%;
-    /* Fundo de input */
+    --border: 240 20% 90%;
+    /* Borda clara com contraste */
+    --input: 240 20% 95%;
+    /* Fundo de input leve e limpo */
     --ring: 245 95% 70%;
-    /* Cor de foco (roxo claro) */
+    /* Roxo claro para foco */
     --radius: 0.5rem;
-    /* Raio de borda */
+    /* Bordas arredondadas */
     --gradient-main: linear-gradient(90deg, hsl(245, 95%, 65%) 0%, hsl(291, 64%, 52%) 100%);
     --gradient-accent: linear-gradient(90deg, hsl(36, 100%, 60%) 0%, hsl(172, 66%, 60%) 100%);
   }
@@ -218,22 +218,11 @@
   /* dourado escuro */
 }
 
-.light .text-zinc-400 {
-  color: #7d8fa6;
-  /* azul acinzentado */
-}
-
-.light .text-zinc-300 {
-  color: #a3b4c9;
-  /* azul claro */
-}
-
-.light .text-gray-300 {
-  color: #a3b4c9;
-}
-
+.light .text-zinc-400,
+.light .text-gray-300,
+.light .text-zinc-300,
 .light .text-gray-500 {
-  color: #7d8fa6;
+  color: var(--foreground) !important;
 }
 
 .light .border-zinc-700 {
@@ -303,6 +292,25 @@
 .light .text-purple-400 {
   color: #bfa14a;
   /* dourado escuro */
+}
+
+/* Melhorando a navbar no modo claro */
+.light .bg-zinc-900,
+.light .bg-zinc-900\/80,
+.light .navbar-backdrop {
+  background: hsl(245, 95%, 65%) !important;
+  /* Roxo claro elegante */
+  color: #fff !important;
+  /* Texto branco */
+  border-bottom: 1px solid hsl(245, 95%, 70%);
+  box-shadow: 0 2px 12px 0 rgba(80, 0, 255, 0.08);
+}
+
+/* Garante contraste para links e itens da navbar no modo claro */
+.light .navbar-backdrop a,
+.light .navbar-backdrop .text-foreground,
+.light .navbar-backdrop .text-white {
+  color: #fff !important;
 }
 
 /* Improved accessibility panel positioning */

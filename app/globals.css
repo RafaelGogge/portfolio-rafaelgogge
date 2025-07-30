@@ -128,25 +128,37 @@
   }
 
   .light {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --background: 220 60% 98%;
+    /* branco azulado */
+    --foreground: 44 100% 40%;
+    /* dourado escuro para textos principais */
+    --card: 220 60% 99%;
+    /* quase branco */
+    --card-foreground: 44 100% 35%;
+    /* dourado mais escuro */
+    --popover: 220 60% 99%;
+    --popover-foreground: 44 100% 35%;
+    --primary: 44 100% 55%;
+    /* dourado */
+    --primary-foreground: 220 60% 98%;
+    --secondary: 210 40% 96%;
+    /* branco azulado suave */
+    --secondary-foreground: 44 100% 40%;
+    --muted: 220 40% 95%;
+    --muted-foreground: 220 15% 60%;
+    --accent: 200 80% 92%;
+    /* azul claro sofisticado */
+    --accent-foreground: 44 100% 40%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --border: 44 100% 85%;
+    /* dourado claro para bordas */
+    --input: 220 40% 95%;
+    --ring: 44 100% 55%;
+    /* dourado */
+    --radius: 0.5rem;
+    --gradient-main: linear-gradient(90deg, hsl(44, 100%, 55%) 0%, hsl(200, 80%, 92%) 100%);
+    --gradient-accent: linear-gradient(90deg, hsl(44, 100%, 65%) 0%, hsl(220, 60%, 98%) 100%);
   }
 }
 
@@ -162,98 +174,116 @@
 
 /* Enhanced Light Theme */
 .light {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
-  color: #1e293b;
+  background: linear-gradient(135deg, #fdfcf7 0%, #eaf6ff 50%, #fffbe6 100%);
+  color: #bfa14a;
+  /* dourado escuro */
 }
 
 /* Light theme component overrides */
 .light .bg-zinc-900 {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fffbe6;
+  /* branco com toque dourado */
+  border: 1px solid #f3e9c7;
+  /* dourado claro */
+  box-shadow: 0 1px 6px 0 rgba(191, 161, 74, 0.08);
 }
 
 .light .bg-zinc-800 {
-  background-color: #f8fafc;
-  border: 1px solid #cbd5e1;
+  background-color: #f6faff;
+  /* branco azulado */
+  border: 1px solid #eaf6ff;
 }
 
 .light .text-white {
-  color: #0f172a;
+  color: #bfa14a;
+  /* dourado escuro */
 }
 
 .light .text-zinc-400 {
-  color: #64748b;
+  color: #7d8fa6;
+  /* azul acinzentado */
 }
 
 .light .text-zinc-300 {
-  color: #475569;
+  color: #a3b4c9;
+  /* azul claro */
 }
 
 .light .text-gray-300 {
-  color: #475569;
+  color: #a3b4c9;
 }
 
 .light .text-gray-500 {
-  color: #64748b;
+  color: #7d8fa6;
 }
 
 .light .border-zinc-700 {
-  border-color: #cbd5e1;
+  border-color: #f3e9c7;
+  /* dourado claro */
 }
 
 .light .border-zinc-800 {
-  border-color: #94a3b8;
+  border-color: #eaf6ff;
+  /* azul claro */
 }
 
 .light .border-zinc-800\/50 {
-  border-color: rgba(148, 163, 184, 0.5);
+  border-color: rgba(234, 246, 255, 0.5);
 }
 
 /* Cards and containers in light mode */
 .light .bg-zinc-800\/50 {
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(203, 213, 225, 0.6);
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(243, 233, 199, 0.6);
+  /* dourado claro */
   backdrop-filter: blur(12px);
 }
 
 /* Gradients in light mode */
 .light .from-purple-500 {
-  --tw-gradient-from: #8b5cf6;
+  --tw-gradient-from: #f5e7b2;
+  /* dourado claro */
 }
 
 .light .to-pink-500 {
-  --tw-gradient-to: #ec4899;
+  --tw-gradient-to: #eaf6ff;
+  /* azul claro */
 }
 
 /* Floating nav in light mode */
 .light .bg-zinc-900\/80 {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 251, 230, 0.95);
+  /* branco dourado translúcido */
   backdrop-filter: blur(20px);
-  border-color: rgba(203, 213, 225, 0.5);
+  border-color: rgba(243, 233, 199, 0.5);
 }
 
 /* Buttons in light mode */
 .light .hover\:bg-zinc-700\/50:hover {
-  background-color: rgba(203, 213, 225, 0.5);
+  background-color: rgba(243, 233, 199, 0.5);
+  /* dourado claro translúcido */
 }
 
 .light .hover\:bg-zinc-800:hover {
-  background-color: #e2e8f0;
+  background-color: #f6faff;
+  /* branco azulado */
 }
 
 /* Project cards in light mode */
 .light .hover\:border-purple-500\/50:hover {
-  border-color: rgba(139, 92, 246, 0.5);
+  border-color: rgba(191, 161, 74, 0.5);
+  /* dourado escuro translúcido */
 }
 
 /* Purple accent colors in light mode */
 .light .bg-purple-500\/20 {
-  background-color: rgba(139, 92, 246, 0.15);
+  background-color: rgba(245, 231, 178, 0.15);
+  /* dourado claro translúcido */
 }
 
 .light .text-purple-400 {
-  color: #7c3aed;
+  color: #bfa14a;
+  /* dourado escuro */
 }
 
 /* Improved accessibility panel positioning */

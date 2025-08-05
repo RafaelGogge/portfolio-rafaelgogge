@@ -688,25 +688,3 @@ export function HologramCourses() {
 		</div>
 	);
 }
-                              <div className="flex flex-wrap gap-1">
-                                {course.skills.map((skill) => (
-                                  <span
-                                    key={skill}
-                             className="text-xs px-2 py-1 bg-primary/20 text-primary rounded border border-primary/30"
-                                  >
-                                    {skill}
-                                  </span>
-                                ))}
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </motion.div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>

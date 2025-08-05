@@ -546,74 +546,78 @@ export function HologramCourses() {
                         <motion.a
                           href={course.certificate}
                           target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <Award className="w-3 h-3" />
-                          <span>Certificado</span>
-                          <ExternalLink className="w-3 h-3" />
-                        </motion.a>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Expanded Details */}
-                  <AnimatePresence>
-                    {selectedCourse === course.id && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="border-t border-border bg-background/50 p-4"
-                      >
-                        <h4 className="text-sm font-semibold mb-2 text-primary">
-                          Todas as Tecnologias:
-                        </h4>
-                        <div className="flex flex-wrap gap-1">
-                          {course.skills.map((skill) => (
-                            <span
-                              key={skill}
-                              className="text-xs px-2 py-1 bg-primary/20 text-primary rounded border border-primary/30"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+      <div className="relative">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+          layout
+        >
+          <AnimatePresence mode="popLayout">
+            {coursesToShow.map((course, index) => {
+              const StatusIcon = getStatusIcon(course.status);
+              return (
+                <motion.div
+                  key={course.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, y: -20 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.1,
+                    layout: { duration: 0.3 },
+                  }}
+                  className="group"
+                >
+                  <motion.div
+                    className="relative bg-background/70 backdrop-blur-sm border border-border rounded-xl overflow-hidden hover:border-border/70 transition-all duration-300"
+                    style={{
+                      boxShadow: `0 4px 20px ${course.color}20`,
+                    }}
+                    whileHover={{
+                      y: -5,
+                      boxShadow: `0 8px 30px ${course.color}30`,
+                    }}
+                    onClick={() =>
+                      setSelectedCourse(
+                        selectedCourse === course.id ? null : course.id
+                      )
+                    }
+                  >
+                    {/* Holographic Effect */}
+                    <motion.div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{
+                        background: `linear-gradient(45deg, ${course.color}10, transparent, ${course.color}10)`,
+                      }}
+                      animate={{
+                        backgroundPosition: ["0% 0%", "100% 100%"],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                      }}
+                    />
+                    ...existing code...
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            );
-          })}
-        </AnimatePresence>
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
         {filteredCourses.length > 6 && (
-          <div className="flex justify-center mt-4">
-            <button
-              className="px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/80 transition-colors"
-              onClick={() => setShowAll((prev) => !prev)}
-            >
-              {showAll ? "Mostrar menos" : "Mostrar mais"}
-            </button>
+          <div className="absolute left-0 right-0 flex justify-center mt-6 pointer-events-none">
+            <div className="flex justify-center w-full pointer-events-auto">
+              <button
+                className="px-6 py-2 rounded-full bg-primary text-white font-semibold shadow-lg hover:bg-primary/80 transition-colors"
+                onClick={() => setShowAll((prev) => !prev)}
+              >
+                {showAll ? "Mostrar menos" : "Mostrar mais"}
+              </button>
+            </div>
           </div>
         )}
-      </motion.div>
-
-      {/* Stats Panel */}
-      <motion.div
-        className="bg-background/70 backdrop-blur-sm border border-border rounded-xl p-6"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-      >
-        <h4 className="text-lg font-bold mb-4 text-center text-foreground">
-          Estatísticas de Aprendizado
-        </h4>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      </div>
           {[
             {
               label: "Total de Cursos",

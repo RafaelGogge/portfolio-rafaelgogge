@@ -131,11 +131,11 @@ const coursesData = [
 const categories = [
   { id: "all", label: "Todos", icon: Zap, color: "#ffffff" },
   { id: "frontend", label: "Frontend", icon: Code2, color: "#61dafb" },
+  { id: "backend", label: "Backend", icon: Server, color: "#8a2be2" },
   { id: "fullstack", label: "Fullstack", icon: Database, color: "#10b981" },
   { id: "cloud", label: "Cloud", icon: Cloud, color: "#ff9900" },
   { id: "devops", label: "DevOps", icon: Shield, color: "#2496ed" },
   { id: "security", label: "Security", icon: Shield, color: "#ef4444" },
-  { id: "backend", label: "Backend", icon: Server, color: "#8a2be2" },
 ];
 
 export function HologramCourses() {
@@ -556,3 +556,4 @@ export function HologramCourses() {
     </div>
   );
 }
+

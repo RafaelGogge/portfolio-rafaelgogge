@@ -692,7 +692,7 @@ export function HologramCourses() {
                                 {course.skills.map((skill) => (
                                   <span
                                     key={skill}
-                                    className="text-xs px-2 py-1 bg-primary/20 text-primary rounded border border-primary/30"
+                             className="text-xs px-2 py-1 bg-primary/20 text-primary rounded border border-primary/30"
                                   >
                                     {skill}
                                   </span>

@@ -15,6 +15,7 @@ import {
   Zap,
   Star,
   TrendingUp,
+  Server,
 } from "lucide-react";
 import { useI18n } from "@/hooks/use-i18n";
 
@@ -110,6 +111,21 @@ const coursesData = [
     color: "#1ba1e2",
     progress: 100,
   },
+  {
+    id: "nodejs-backend",
+    title: "Node.js Backend Essentials",
+    institution: "Alura",
+    duration: 32,
+    status: "completed",
+    category: "backend",
+    level: "intermediate",
+    rating: 5,
+    certificate: "https://example.com/cert-backend",
+    description: "Desenvolvimento de APIs RESTful com Node.js e Express.",
+    skills: ["Node.js", "Express", "REST", "JavaScript"],
+    color: "#8a2be2",
+    progress: 100,
+  },
 ];
 
 const categories = [
@@ -119,6 +135,7 @@ const categories = [
   { id: "cloud", label: "Cloud", icon: Cloud, color: "#ff9900" },
   { id: "devops", label: "DevOps", icon: Shield, color: "#2496ed" },
   { id: "security", label: "Security", icon: Shield, color: "#ef4444" },
+  { id: "backend", label: "Backend", icon: Server, color: "#8a2be2" },
 ];
 
 export function HologramCourses() {

@@ -21,14 +21,13 @@ import { useI18n } from "@/hooks/use-i18n";
 
 const coursesData = [
   {
-    id: "react-advanced",
-    title: "React.js Avançado",
-    institution: "Origamid",
-    duration: 36,
+    id: "iniciante-em-programacao-alura",
+    title: "Formação Iniciante em Programação G9 - ONE",
+    institution: "Oracle + Alura",
+    duration: 76,
     status: "completed",
-    category: "frontend",
-    level: "advanced",
-    rating: 5,
+    category: "fullstack",
+    level: "beginner",
     certificate: "https://example.com/cert1",
     description:
       "Desenvolvimento avançado com React, hooks customizados, performance e testes.",
@@ -44,7 +43,6 @@ const coursesData = [
     status: "completed",
     category: "frontend",
     level: "intermediate",
-    rating: 4,
     certificate: "https://example.com/cert2",
     description: "TypeScript aplicado ao React com tipagem avançada.",
     skills: ["TypeScript", "React", "Interfaces", "Generics"],
@@ -59,7 +57,6 @@ const coursesData = [
     status: "inProgress",
     category: "fullstack",
     level: "intermediate",
-    rating: 0,
     certificate: null,
     description: "Framework React para produção com SSG, SSR e API Routes.",
     skills: ["Next.js", "SSG", "SSR", "Vercel"],
@@ -74,7 +71,6 @@ const coursesData = [
     status: "completed",
     category: "cloud",
     level: "beginner",
-    rating: 5,
     certificate: "https://example.com/cert3",
     description: "Fundamentos da AWS, EC2, S3, Lambda e melhores práticas.",
     skills: ["AWS", "EC2", "S3", "Lambda"],
@@ -89,7 +85,6 @@ const coursesData = [
     status: "inProgress",
     category: "devops",
     level: "intermediate",
-    rating: 0,
     certificate: null,
     description: "Containerização e orquestração para ambientes de produção.",
     skills: ["Docker", "Kubernetes", "DevOps", "Containers"],
@@ -104,7 +99,6 @@ const coursesData = [
     status: "completed",
     category: "security",
     level: "beginner",
-    rating: 4,
     certificate: "https://example.com/cert4",
     description: "Segurança da informação, ameaças e contramedidas.",
     skills: ["Security", "Networks", "Threats", "Prevention"],
@@ -119,7 +113,6 @@ const coursesData = [
     status: "completed",
     category: "backend",
     level: "intermediate",
-    rating: 5,
     certificate: "https://example.com/cert-backend",
     description: "Desenvolvimento de APIs RESTful com Node.js e Express.",
     skills: ["Node.js", "Express", "REST", "JavaScript"],
@@ -143,9 +136,8 @@ export function HologramCourses() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
 
-  const filteredCourses = coursesData.filter(
-    (course) =>
-      selectedCategory === "all" || course.category === selectedCategory
+  const filteredCourses = coursesData.filter((course) =>
+    selectedCategory === "all" || course.category === selectedCategory
   );
 
   const getStatusIcon = (status: string) => {
@@ -188,100 +180,97 @@ export function HologramCourses() {
 
         <div className="relative bg-background/70 backdrop-blur-sm border border-border rounded-2xl p-6">
           <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-                <TrendingUp className="w-6 h-6 text-foreground" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-foreground">
-                  Sistema de Aprendizado
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  {filteredCourses.length} cursos •{" "}
-                  {coursesData.filter((c) => c.status === "completed").length}{" "}
-                  concluídos
-                </p>
-              </div>
+            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+              <TrendingUp className="w-6 h-6 text-foreground" />
             </div>
+            <div>
+              <h3 className="text-xl font-bold text-foreground">
+                Sistema de Aprendizado
+              </h3>
+              <p className="text-muted-foreground text-sm">
+                {filteredCourses.length} cursos •{" "}
+                {coursesData.filter((c) => c.status === "completed").length}{" "}
+                concluídos
+              </p>
+            </div>
+          </div>
+          {/* Progress Ring */}
+          <div className="relative w-16 h-16">
+            <svg
+              className="w-16 h-16 transform -rotate-90"
+              viewBox="0 0 64 64"
+            >
+              <circle
+                cx="32"
+                cy="32"
+                r="28"
+                stroke="rgba(59, 130, 246, 0.2)"
+                strokeWidth="6"
+                fill="none"
+              />
+              <motion.circle
+                cx="32"
+                cy="32"
+                r="28"
+                stroke="#3b82f6"
+                strokeWidth="6"
+                fill="none"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{
+                  pathLength:
+                    coursesData.filter((c) => c.status === "completed")
+                      .length / coursesData.length,
+                }}
+                transition={{ duration: 2, ease: "easeOut" }}
+                style={{
+                  pathLength:
+                    coursesData.filter((c) => c.status === "completed")
+                      .length / coursesData.length,
+                  strokeDasharray: "175.929",
+                }}
+              />
+            </svg>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-xs font-bold text-primary">
+                {Math.round(
+                  (coursesData.filter((c) => c.status === "completed")
+                    .length /
+                    coursesData.length) *
+                    100
+                )}
+                %
+              </span>
+            </div>
+          </div>
+        </div>
 
-            {/* Progress Ring */}
-            <div className="relative w-16 h-16">
-              <svg
-                className="w-16 h-16 transform -rotate-90"
-                viewBox="0 0 64 64"
+        {/* Category Filter */}
+        <div className="flex flex-wrap gap-2">
+          {categories.map((category) => {
+            const IconComponent = category.icon;
+            const isActive = selectedCategory === category.id;
+
+            return (
+              <motion.button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300 ${
+                  isActive
+                    ? "border-primary/50 bg-primary/20 text-primary"
+                    : "border-border bg-muted/50 text-muted-foreground hover:border-border/70"
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <circle
-                  cx="32"
-                  cy="32"
-                  r="28"
-                  stroke="rgba(59, 130, 246, 0.2)"
-                  strokeWidth="6"
-                  fill="none"
+                <IconComponent
+                  className="w-4 h-4"
+                  style={{ color: isActive ? "var(--primary)" : category.color }}
                 />
-                <motion.circle
-                  cx="32"
-                  cy="32"
-                  r="28"
-                  stroke="#3b82f6"
-                  strokeWidth="6"
-                  fill="none"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  animate={{
-                    pathLength:
-                      coursesData.filter((c) => c.status === "completed")
-                        .length / coursesData.length,
-                  }}
-                  transition={{ duration: 2, ease: "easeOut" }}
-                  style={{
-                    pathLength:
-                      coursesData.filter((c) => c.status === "completed")
-                        .length / coursesData.length,
-                    strokeDasharray: "175.929",
-                  }}
-                />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-xs font-bold text-primary">
-                  {Math.round(
-                    (coursesData.filter((c) => c.status === "completed")
-                      .length /
-                      coursesData.length) *
-                      100
-                  )}
-                  %
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Category Filter */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => {
-              const IconComponent = category.icon;
-              const isActive = selectedCategory === category.id;
-
-              return (
-                <motion.button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300 ${
-                    isActive
-                  ? "border-primary/50 bg-primary/20 text-primary"
-                  : "border-border bg-muted/50 text-muted-foreground hover:border-border/70"
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <IconComponent
-                    className="w-4 h-4"
-                    style={{ color: isActive ? "var(--primary)" : category.color }}
-                  />
-                  <span className="text-sm font-medium">{category.label}</span>
-                </motion.button>
-              );
-            })}
-          </div>
+                <span className="text-sm font-medium">{category.label}</span>
+              </motion.button>
+            );
+          })}
         </div>
       </div>
 
@@ -309,7 +298,7 @@ export function HologramCourses() {
                 className="group"
               >
                 <motion.div
-                className="relative bg-background/70 backdrop-blur-sm border border-border rounded-xl overflow-hidden hover:border-border/70 transition-all duration-300"
+                  className="relative bg-background/70 backdrop-blur-sm border border-border rounded-xl overflow-hidden hover:border-border/70 transition-all duration-300"
                   style={{
                     boxShadow: `0 4px 20px ${course.color}20`,
                   }}
@@ -387,8 +376,8 @@ export function HologramCourses() {
                                 key={i}
                                 className={`w-3 h-3 ${
                                   i < course.rating
-                            ? "text-warning fill-current"
-                            : "text-muted-foreground"
+                                    ? "text-warning fill-current"
+                                    : "text-muted-foreground"
                                 }`}
                               />
                             ))}
@@ -556,4 +545,3 @@ export function HologramCourses() {
     </div>
   );
 }
-

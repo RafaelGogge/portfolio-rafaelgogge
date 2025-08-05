@@ -73,11 +73,6 @@ const coursesData = [
     level: "beginner",
     certificate: "https://cursos.alura.com.br/certificate/7d4c1ad4-5839-43fe-9ca7-b903f258a86d",
     description: "Curso prático de HTML e CSS abordando unidades de medida, adaptação de elementos, responsividade e publicação de projetos no GitHub. Todas as atividades concluídas.",
-    skills: ["HTML", "CSS", "Responsividade", "GitHub", "Unidades de Medida"],
-    color: "#e34c26",
-    progress: 100,
-  },
-  {
     id: "html-css-ambientes-estrutura-tags",
     title: "HTML e CSS: ambientes de desenvolvimento, estrutura de arquivos e tags",
     institution: "Oracle + Alura",
@@ -87,211 +82,6 @@ const coursesData = [
     level: "beginner",
     certificate: "https://cursos.alura.com.br/certificate/4bd27e70-910f-41e1-b536-7dda3861e09b",
     description: "Curso prático de HTML e CSS com foco em VSCode, documentação, layout, tags semânticas e estilização avançada. Todas as atividades concluídas.",
-  return (
-    <div className="space-y-8">
-      {/* Holographic Header */}
-      <div className="relative">
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 rounded-2xl blur-xl"
-          animate={{
-            opacity: [0.5, 0.8, 0.5],
-            scale: [1, 1.02, 1],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        {/* ...header content... */}
-        <div className="relative bg-background/70 backdrop-blur-sm border border-border rounded-2xl p-6">
-          {/* ...header inner content... */}
-          {/* Category Filter */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => {
-              const IconComponent = category.icon;
-              const isActive = selectedCategory === category.id;
-              return (
-                <motion.button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300 ${
-                    isActive
-                      ? "border-primary/50 bg-primary/20 text-primary"
-                      : "border-border bg-muted/50 text-muted-foreground hover:border-border/70"
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <IconComponent
-                    className="w-4 h-4"
-                    style={{ color: isActive ? "var(--primary)" : category.color }}
-                  />
-                  <span className="text-sm font-medium">{category.label}</span>
-                </motion.button>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* Courses Grid */}
-      <div className="relative">
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
-          layout
-        >
-          <AnimatePresence mode="popLayout">
-            {coursesToShow.map((course, index) => {
-              const StatusIcon = getStatusIcon(course.status);
-              return (
-                <motion.div
-                  key={course.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.8, y: -20 }}
-                  transition={{
-                    duration: 0.4,
-                    delay: index * 0.1,
-                    layout: { duration: 0.3 },
-                  }}
-                  className="group"
-                >
-                  <motion.div
-                    className="relative bg-background/70 backdrop-blur-sm border border-border rounded-xl overflow-hidden hover:border-border/70 transition-all duration-300"
-                    style={{
-                      boxShadow: `0 4px 20px ${course.color}20`,
-                    }}
-                    whileHover={{
-                      y: -5,
-                      boxShadow: `0 8px 30px ${course.color}30`,
-                    }}
-                    onClick={() =>
-                      setSelectedCourse(
-                        selectedCourse === course.id ? null : course.id
-                      )
-                    }
-                  >
-                    {/* Holographic Effect */}
-                    <motion.div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{
-                        background: `linear-gradient(45deg, ${course.color}10, transparent, ${course.color}10)`,
-                      }}
-                      animate={{
-                        backgroundPosition: ["0% 0%", "100% 100%"],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                      }}
-                    />
-                    {/* ...course card content... */}
-                  </motion.div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </motion.div>
-        {filteredCourses.length > 6 && (
-          <div className="absolute left-0 right-0 flex justify-center mt-6 pointer-events-none">
-            <div className="flex justify-center w-full pointer-events-auto">
-              <button
-                className="px-6 py-2 rounded-full bg-primary text-white font-semibold shadow-lg hover:bg-primary/80 transition-colors"
-                onClick={() => setShowModal(true)}
-              >
-                Mostrar mais
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Modal de cursos completos da formação */}
-      <AnimatePresence>
-        {showModal && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className="bg-background rounded-2xl p-8 max-w-4xl w-full shadow-2xl border border-border overflow-y-auto max-h-[80vh]"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-            >
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-xl font-bold text-foreground">
-                  Todos os cursos da formação "{categories.find(c => c.id === selectedCategory)?.label || "Todos"}"
-                </h3>
-                <button
-                  className="px-4 py-1 rounded-full bg-primary text-white hover:bg-primary/80 transition-colors"
-                  onClick={() => setShowModal(false)}
-                >
-                  Fechar
-                </button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {filteredCourses.map((course, index) => {
-                  const StatusIcon = getStatusIcon(course.status);
-                  return (
-                    <motion.div
-                      key={course.id}
-                      layout
-                      initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.8, y: -20 }}
-                      transition={{
-                        duration: 0.4,
-                        delay: index * 0.05,
-                        layout: { duration: 0.3 },
-                      }}
-                      className="group"
-                    >
-                      <motion.div
-                        className="relative bg-background/70 backdrop-blur-sm border border-border rounded-xl overflow-hidden hover:border-border/70 transition-all duration-300"
-                        style={{
-                          boxShadow: `0 4px 20px ${course.color}20`,
-                        }}
-                        whileHover={{
-                          y: -5,
-                          boxShadow: `0 8px 30px ${course.color}30`,
-                        }}
-                        onClick={() =>
-                          setSelectedCourse(
-                            selectedCourse === course.id ? null : course.id
-                          )
-                        }
-                      >
-                        {/* Holographic Effect */}
-                        <motion.div
-                          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                          style={{
-                            background: `linear-gradient(45deg, ${course.color}10, transparent, ${course.color}10)`,
-                          }}
-                          animate={{
-                            backgroundPosition: ["0% 0%", "100% 100%"],
-                          }}
-                          transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                          }}
-                        />
-                        {/* ...course card content... */}
-                      </motion.div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Stats Panel */}
       {/* ...stats panel content... */}
@@ -797,7 +587,120 @@ const coursesData = [
                             repeatType: "reverse",
                           }}
                         />
-                        ...existing code...
+                        {/* Progress Bar */}
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-border/60">
+                          <motion.div
+                            className="h-full"
+                            style={{ backgroundColor: course.color }}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${course.progress}%` }}
+                            transition={{ duration: 1, delay: index * 0.05 }}
+                          />
+                        </div>
+                        <div className="p-6">
+                          {/* Header */}
+                          <div className="flex items-start justify-between mb-4">
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2 mb-2">
+                                <StatusIcon
+                                  className="w-5 h-5"
+                                  style={{ color: getStatusColor(course.status) }}
+                                />
+                                <span
+                                  className="text-xs font-medium px-2 py-1 rounded-full"
+                                  style={{
+                                    backgroundColor: `${getLevelColor(course.level)}20`,
+                                    color: getLevelColor(course.level),
+                                  }}
+                                >
+                                  {course.level}
+                                </span>
+                              </div>
+                              <h3 className="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
+                                {course.title}
+                              </h3>
+                              <p className="text-sm text-muted-foreground mb-2">
+                                {course.institution}
+                              </p>
+                            </div>
+                            <div className="flex items-center gap-2 text-muted-foreground">
+                              <Clock className="w-4 h-4" />
+                              <span className="text-sm">{course.duration}h</span>
+                            </div>
+                          </div>
+                          {/* Description */}
+                          <p className="text-sm text-foreground/80 mb-4 line-clamp-2">
+                            {course.description}
+                          </p>
+                          {/* Skills */}
+                          <div className="flex flex-wrap gap-1 mb-4">
+                            {course.skills.slice(0, 3).map((skill) => (
+                              <span
+                                key={skill}
+                                className="text-xs px-2 py-1 bg-muted/50 text-foreground/80 rounded border border-border"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                            {course.skills.length > 3 && (
+                              <span className="text-xs px-2 py-1 text-muted-foreground">
+                                +{course.skills.length - 3}
+                              </span>
+                            )}
+                          </div>
+                          {/* Actions */}
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <div
+                                className="w-3 h-3 rounded-full"
+                                style={{ backgroundColor: getStatusColor(course.status) }}
+                              />
+                              <span className="text-xs text-muted-foreground">
+                                {course.status === "completed" ? "Concluído" : "Em andamento"}
+                              </span>
+                            </div>
+                            {course.certificate && (
+                              <motion.a
+                                href={course.certificate}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                              >
+                                <Award className="w-3 h-3" />
+                                <span>Certificado</span>
+                                <ExternalLink className="w-3 h-3" />
+                              </motion.a>
+                            )}
+                          </div>
+                        </div>
+                        {/* Expanded Details */}
+                        <AnimatePresence>
+                          {selectedCourse === course.id && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="border-t border-border bg-background/50 p-4"
+                            >
+                              <h4 className="text-sm font-semibold mb-2 text-primary">
+                                Todas as Tecnologias:
+                              </h4>
+                              <div className="flex flex-wrap gap-1">
+                                {course.skills.map((skill) => (
+                                  <span
+                                    key={skill}
+                                    className="text-xs px-2 py-1 bg-primary/20 text-primary rounded border border-primary/30"
+                                  >
+                                    {skill}
+                                  </span>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </motion.div>
                     </motion.div>
                   );

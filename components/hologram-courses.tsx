@@ -255,6 +255,7 @@ const categories = [
   { id: "cloud", label: "Cloud", icon: Cloud, color: "#ff9900" },
   { id: "devops", label: "DevOps", icon: Shield, color: "#2496ed" },
   { id: "security", label: "Security", icon: Shield, color: "#ef4444" },
+  { id: "ia", label: "IA", icon: TrendingUp, color: "#6366f1" },
 ];
 
 export function HologramCourses() {
@@ -262,9 +263,11 @@ export function HologramCourses() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
 
+  const [showAll, setShowAll] = useState(false);
   const filteredCourses = coursesData.filter((course) =>
     selectedCategory === "all" || course.category === selectedCategory
   );
+  const coursesToShow = showAll ? filteredCourses : filteredCourses.slice(0, 6);
 
   const getStatusIcon = (status: string) => {
     return status === "completed" ? CheckCircle : PlayCircle;
@@ -406,9 +409,8 @@ export function HologramCourses() {
         layout
       >
         <AnimatePresence mode="popLayout">
-          {filteredCourses.map((course, index) => {
+          {coursesToShow.map((course, index) => {
             const StatusIcon = getStatusIcon(course.status);
-
             return (
               <motion.div
                 key={course.id}
@@ -494,24 +496,6 @@ export function HologramCourses() {
                         <p className="text-sm text-muted-foreground mb-2">
                           {course.institution}
                         </p>
-
-                        {course.rating > 0 && (
-                          <div className="flex items-center gap-1">
-                            {[...Array(5)].map((_, i) => (
-                              <Star
-                                key={i}
-                                className={`w-3 h-3 ${
-                                  i < course.rating
-                                    ? "text-warning fill-current"
-                                    : "text-muted-foreground"
-                                }`}
-                              />
-                            ))}
-                            <span className="text-xs text-muted-foreground ml-1">
-                              ({course.rating})
-                            </span>
-                          </div>
-                        )}
                       </div>
 
                       <div className="flex items-center gap-2 text-muted-foreground">
@@ -606,6 +590,16 @@ export function HologramCourses() {
             );
           })}
         </AnimatePresence>
+        {filteredCourses.length > 6 && (
+          <div className="flex justify-center mt-4">
+            <button
+              className="px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/80 transition-colors"
+              onClick={() => setShowAll((prev) => !prev)}
+            >
+              {showAll ? "Mostrar menos" : "Mostrar mais"}
+            </button>
+          </div>
+        )}
       </motion.div>
 
       {/* Stats Panel */}
